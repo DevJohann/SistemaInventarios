@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Sistema de registros</title>
+	<h:outputStylesheet library="css" name="resources/css/LoginStyles.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<h1 class="mainLoginTitle">Login</h1>
+	<h:form>
+		Usuario: <h:inputText value="#{loginBean.username}"/>
+		<br/>
+		Contraseña: <h:inputSecret value="#{loginBean.password}"/>
+		<br/>
+		
+	</h:form>
+</h:body>
+</html>
