@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    
+	<h:head>
+	
+	<meta http-equiv="Content-Type" content="text/html;
+	charset=utf-8" />
+	
+	<title>Productos</title>
+	
+	</h:head>
+	
+	<h:body>
+	
+	<p:panel id= "lista" header="Productos" style="margin-bottom:20px">
+	<h:form>
+	<p:dataTable var="User" value="#{}" rows="10"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+			{PreviousPageLink} {PageLinks}
+			{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			
+			<p:column headerText="Id">
+			<h:outputText value ="#{User.UserId}"/>
+			</p:column>
+			
+			<p:column headerText="Referencia Del Producto">
+			<h:outputText value ="#{User.ReferenciaDelProducto}"/>
+			</p:column>
+			
+			<p:column headerText="Cat Id">
+			<h:outputText value ="#{User.CatId}"/>
+			</p:column>
+			
+			<p:column headerText="Descuento Del 	Producto">
+			<h:outputText value ="#{User.DescuentoDelProducto}"/>
+			</p:column>
+			
+			<p:column headerText="Stock Producto">
+			<h:outputText value ="#{User.StockProducto}"/>
+			</p:column>
+			
+			<p:column headerText="Stock Mínimo Producto">
+			<h:outputText value ="#{User.StockMínimoProducto}"/>
+			</p:column>
+			
+			<p:column headerText="Stock Máximo Producto">
+			<h:outputText value ="#{User.StockMáximoProducto}"/>
+			</p:column>
+			
+			<p:column headerText="Iva Producto">
+			<h:outputText value ="#{User.IvaProducto}"/>
+			</p:column>
+			
+			<p:column headerText="Precio Venta Producto">
+			<h:outputText value ="#{User.PrecioVentaProducto}"/>
+			</p:column>
+			
+			<p:column headerText="Precio Compra Producto">
+			<h:outputText value ="#{User.PrecioCompraProducto}"/>
+			</p:column>
+			
+			<p:column headerText="Estado Del Producto">
+			<h:outputText value ="#{User.EstadoDelProducto}"/>
+			</p:column>
+			
+			<p:column headerText="FechaVenc Producto">
+			<h:outputText value ="#{User.FechaVencProducto}"/>
+			</p:column>
+			
+	</p:dataTable>
+	
+	</h:form>
+	</p:panel>
+	
+	</h:body>
+
+</html>
