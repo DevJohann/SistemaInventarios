@@ -28,7 +28,6 @@ public class HibernateUtil {
 				ac.addAnnotatedClass(Category.class);
 				ac.addAnnotatedClass(Parameter.class);
 				ac.addAnnotatedClass(Product.class);
-
 				sessionFactory = ac.configure().buildSessionFactory();
 
 			} catch (Throwable ex) {

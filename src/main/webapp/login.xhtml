@@ -10,11 +10,18 @@
 <h:body>
 	<h1 class="mainLoginTitle">Login</h1>
 	<h:form>
-		Usuario: <h:inputText value="#{loginBean.username}"/>
+		Usuario: <h:inputText value="#{userBean.tempLoginVal}" required="true" id="loginField"/>
+		<h:message for="loginField"></h:message>
 		<br/>
-		Contraseña: <h:inputSecret value="#{loginBean.password}"/>
+		Contraseña: <h:inputSecret value="#{userBean.tempPassVal}" required="true" id="passwordField"/>
+		<h:message for="passwordField"></h:message>
 		<br/>
-		
+		<h:commandButton value="Iniciar sesión" action="#{userBean.checkLogin}">
+		<!--  
+			<f:param name="login" value="#{loginValue.value}"></f:param>
+			<f:param name="password" value="#{passwordValue.value}"></f:param>
+		-->
+		</h:commandButton>
 	</h:form>
 </h:body>
 </html>
