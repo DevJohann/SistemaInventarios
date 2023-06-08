@@ -9,4 +9,6 @@ public interface UserDAO {
 
 	public void update(User user);
 	// public String checkLogin(String username, String password);
+
+	public void save(User user);
 }

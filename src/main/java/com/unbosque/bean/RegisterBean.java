@@ -5,6 +5,10 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.unbosque.dao.UserDAO;
+import com.unbosque.dao.impl.UserDAOImpl;
+import com.unbosque.entity.User;
+
 @ManagedBean
 @SessionScoped
 public class RegisterBean {
@@ -19,10 +23,36 @@ public class RegisterBean {
 	private Date lastPsswdDate;
 	private int psswdAttempts;
 	private boolean userStatus;
+
+	// For frontend
 	private String[] userTypes = { "Empleado" };
 
 	public RegisterBean() {
 
+	}
+
+	public String registerNewUser() {
+		UserDAO userDAO = new UserDAOImpl();
+		// Check if user already exists
+		if (userDAO.retrieveUser(login) != null) {
+			return "nuevoRegistro";
+		} else {
+			// User is available
+			User newUser = new User();
+			newUser.setLogin(login);
+			newUser.setPsswd(password);
+			newUser.setUserType("E");
+			newUser.setUserName(name);
+			newUser.setUserSurname(surname);
+			newUser.setUserEmail(email);
+			newUser.setRegisterDate(new Date());
+			newUser.setLastPsswdDate(new Date());
+			newUser.setPsswdAttemps(0);
+			newUser.setUserStatus(true);
+			// Load user to DB
+			userDAO.save(newUser);
+			return "VistaEmpleado";
+		}
 	}
 
 	public String getLogin() {

@@ -42,4 +42,12 @@ public class UserDAOImpl implements UserDAO {
 		t.commit();
 	}
 
+	@Override
+	public void save(User user) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.save(user);
+		t.commit();
+	}
+
 }
