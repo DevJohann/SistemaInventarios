@@ -9,21 +9,27 @@
 <h:body>
 	<h1>REGISTRO</h1>
 	<h:form>
-		Nombre de usuario: <h:inputText value="#{registerBean.login}"></h:inputText>
+		Nombre de usuario: <h:inputText value="#{registerBean.login}" required="true" id="username"></h:inputText>
+		<h:message for="username"></h:message>
 		<br/>
-		Contraseña: <h:inputText value="#{registerBean.login}"></h:inputText>
+		Contraseña: <h:inputSecret value="#{registerBean.login}" required="true" id="password"></h:inputSecret>
+		<h:message for="password"></h:message>
 		<br/>
-		Tipo de usuario: <h:selectOneMenu value="#{registerBean.login}">
+		Tipo de usuario: <h:selectOneMenu value="#{registerBean.login}" required="true" id="usertype">
 							<f:selectItems value="#{registerBean.userTypes}"></f:selectItems>
 						</h:selectOneMenu>
+		<h:message for="usertype"></h:message>
 		<br/>
-		Nombre: <h:inputText value="#{registerBean.name}"></h:inputText>
+		Nombre: <h:inputText value="#{registerBean.name}" required="true" id="name"></h:inputText>
+		<h:message for="name"></h:message>
 		<br/>
-		Apellido: <h:inputText value="#{registerBean.surname}"></h:inputText>
+		Apellido: <h:inputText value="#{registerBean.surname}" required="true" id="surname"></h:inputText>
+		<h:message for="surname"></h:message>
 		<br/>
-		Correo: <h:inputText value="#{registerBean.email}"></h:inputText> 
+		Correo: <h:inputText value="#{registerBean.email}" required="true" id="email"></h:inputText>
+		<h:message for="email"></h:message> 
 		<br/>
-		<h:commandButton value="Registrarse" action="login"/>
+		<h:commandButton value="Registrarse" action="#{registerBean.registerNewUser}"/>
 	</h:form>
 	<h:form>
 		<h:commandButton value="Volver" action="index"/>

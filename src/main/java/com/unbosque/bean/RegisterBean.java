@@ -35,6 +35,7 @@ public class RegisterBean {
 		UserDAO userDAO = new UserDAOImpl();
 		// Check if user already exists
 		if (userDAO.retrieveUser(login) != null) {
+			// User is not available
 			return "nuevoRegistro";
 		} else {
 			// User is available
@@ -51,7 +52,7 @@ public class RegisterBean {
 			newUser.setUserStatus(true);
 			// Load user to DB
 			userDAO.save(newUser);
-			return "VistaEmpleado";
+			return "index";
 		}
 	}
 
