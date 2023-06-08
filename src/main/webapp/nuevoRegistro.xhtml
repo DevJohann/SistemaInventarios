@@ -10,14 +10,19 @@
 	<h1>REGISTRO</h1>
 	<h:form>
 		Nombre de usuario: <h:inputText value="#{registerBean.login}"></h:inputText>
+		<br/>
 		Contraseña: <h:inputText value="#{registerBean.login}"></h:inputText>
+		<br/>
 		Tipo de usuario: <h:selectOneMenu value="#{registerBean.login}">
-							<f:selectItem value="Administrador"></f:selectItem>
-							<f:selectItem value="Empleado"></f:selectItem>
+							<f:selectItems value="#{registerBean.userTypes}"></f:selectItems>
 						</h:selectOneMenu>
+		<br/>
 		Nombre: <h:inputText value="#{registerBean.name}"></h:inputText>
+		<br/>
 		Apellido: <h:inputText value="#{registerBean.surname}"></h:inputText>
+		<br/>
 		Correo: <h:inputText value="#{registerBean.email}"></h:inputText> 
+		<br/>
 		<h:commandButton value="Registrarse" action="login"/>
 	</h:form>
 	<h:form>

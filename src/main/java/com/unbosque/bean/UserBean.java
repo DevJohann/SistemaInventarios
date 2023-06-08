@@ -1,7 +1,9 @@
 package com.unbosque.bean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.unbosque.dao.UserDAO;
 import com.unbosque.dao.impl.UserDAOImpl;
@@ -44,9 +46,8 @@ public class UserBean {
 			}
 
 		} else {
-			// FacesContext.getCurrentInstance().addMessage(null,
-			// new FacesMessage(FacesMessage.SEVERITY_WARN, "Credenciales incorrectas",
-			// "Vuelva a intentarlo"));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Credenciales incorrectas", "Vuelva a intentarlo"));
 
 			// Find user when password was incorrect to add password attempt
 			User userNotValid = userDAO.retrieveUser(tempLoginVal);

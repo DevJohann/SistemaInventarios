@@ -19,6 +19,7 @@ public class RegisterBean {
 	private Date lastPsswdDate;
 	private int psswdAttempts;
 	private boolean userStatus;
+	private String[] userTypes = { "Empleado" };
 
 	public RegisterBean() {
 
@@ -102,6 +103,14 @@ public class RegisterBean {
 
 	public void setUserStatus(boolean userStatus) {
 		this.userStatus = userStatus;
+	}
+
+	public String[] getUserTypes() {
+		return userTypes;
+	}
+
+	public void setUserTypes(String[] userTypes) {
+		this.userTypes = userTypes;
 	}
 
 }
