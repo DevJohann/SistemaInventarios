@@ -23,4 +23,23 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
+	@Override
+	public User retrieveUser(String username) {
+		Session sesion = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = sesion.beginTransaction();
+		List response = sesion.createQuery("FROM User WHERE login='" + username + "'").list();
+		if (response.size() == 1) {
+			return (User) response.get(0);
+		}
+		return null;
+	}
+
+	@Override
+	public void update(User user) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.update(user);
+		t.commit();
+	}
+
 }

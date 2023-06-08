@@ -1,17 +1,23 @@
 package com.unbosque.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the users database table.
  * 
  */
 @Entity
-@Table(name="users")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@Table(name = "users")
+@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -19,31 +25,32 @@ public class User implements Serializable {
 	private String login;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="last_psswd_date")
+	@Column(name = "last_psswd_date")
 	private Date lastPsswdDate;
 
+	@Column(name = "psswd")
 	private String psswd;
 
-	@Column(name="psswd_attemps")
+	@Column(name = "psswd_attemps")
 	private int psswdAttemps;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="register_date")
+	@Column(name = "register_date")
 	private Date registerDate;
 
-	@Column(name="user_email")
+	@Column(name = "user_email")
 	private String userEmail;
 
-	@Column(name="user_name")
+	@Column(name = "user_name")
 	private String userName;
 
-	@Column(name="user_status")
-	private byte userStatus;
+	@Column(name = "user_status")
+	private boolean userStatus;
 
-	@Column(name="user_surname")
+	@Column(name = "user_surname")
 	private String userSurname;
 
-	@Column(name="user_type")
+	@Column(name = "user_type")
 	private String userType;
 
 	public User() {
@@ -105,12 +112,12 @@ public class User implements Serializable {
 		this.userName = userName;
 	}
 
-	public byte getUserStatus() {
+	public boolean getUserStatus() {
 		return this.userStatus;
 	}
 
-	public void setUserStatus(byte userStatus) {
-		this.userStatus = userStatus;
+	public void setUserStatus(boolean b) {
+		this.userStatus = b;
 	}
 
 	public String getUserSurname() {
