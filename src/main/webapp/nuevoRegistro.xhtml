@@ -7,10 +7,23 @@
 	<title>Inventario</title>
 </h:head>
 <h:body>
-	<h1>INVENTARIO</h1>
+	<h1>REGISTRO</h1>
 	<h:form>
-		<h:commandButton value="Iniciar sesión" action="login"/>
-		<h:commandButton value="Registrarse" action="nuevoRegistro"/>
+		Nombre de usuario: <h:inputText value="#{registerBean.login}"></h:inputText>
+		Contraseña: <h:inputText value="#{registerBean.login}"></h:inputText>
+		Tipo de usuario: <h:selectOneMenu value="#{registerBean.login}">
+							<f:selectItem value="Administrador"></f:selectItem>
+							<f:selectItem value="Empleado"></f:selectItem>
+						</h:selectOneMenu>
+		Nombre: <h:inputText value="#{registerBean.name}"></h:inputText>
+		Apellido: <h:inputText value="#{registerBean.surname}"></h:inputText>
+		Correo: <h:inputText value="#{registerBean.email}"></h:inputText> 
+		<h:commandButton value="Registrarse" action="login"/>
 	</h:form>
+	<h:form>
+		<h:commandButton value="Volver" action="index"/>
+	</h:form>
+	
+	
 </h:body>
 </html>
