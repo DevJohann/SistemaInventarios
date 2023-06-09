@@ -28,4 +28,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 		t.commit();
 	}
 
+	@Override
+	public void remove(Category category) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.delete(category);
+		t.commit();
+	}
+
 }

@@ -41,6 +41,13 @@ public class ProductBean {
 		listaProductos = new ListDataModel(lista);
 		return listaProductos;
 	}
+	
+	public String eliminarProducto() {
+		Product productTemp = (Product)(listaProductos.getRowData());
+		ProductDAO dao = new ProductDAOImpl();
+		dao.remove(productTemp);
+		return "listarProductos";
+	}
 
 	public Product getProduct() {
 		return product;
