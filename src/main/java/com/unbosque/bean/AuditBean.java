@@ -11,14 +11,11 @@ import com.unbosque.entity.Audit;
 @ManagedBean
 @SessionScoped
 public class AuditBean {
-	
 
-		private List<Audit> audits = null;
-		
-		public List<Audit> getAudits(){
-			AuditDAOImpl auditDAO = new AuditDAOImpl();
-			audits = auditDAO.getAudits();
-			return audits;
-			
-		}
+	public List<Audit> getAudits() {
+		AuditDAOImpl auditDAO = new AuditDAOImpl();
+		List<Audit> audits = auditDAO.getAudits();
+		return audits;
+
+	}
 }

@@ -2,11 +2,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Login</title>
+	<title>Categorías</title>
 </h:head>
 <h:body>
-
+	<h1>Tabla de categorías</h1>
+	
+	<p:panel id= "listaCat" header="Categorías" style="margin-bottom:20px">
+	<h:form>
+	<p:dataTable var="category" value="#{categoryBean.categoryList}" rows="3"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+			{PreviousPageLink} {PageLinks}
+			{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			
+			<p:column headerText="Id">
+			<h:outputText value ="#{category.id}"/>
+			</p:column>
+			
+			<p:column headerText="Nombre">
+			<h:outputText value ="#{category.catName}"/>
+			</p:column>
+			
+			<p:column headerText="Estado">
+			<h:outputText value ="#{category.catStatus}"/>
+			</p:column>
+			
+	</p:dataTable>
+	</h:form>
+	</p:panel>
 </h:body>
 </html>

@@ -1,17 +1,21 @@
-	package com.unbosque.entity;
+package com.unbosque.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the audits database table.
  * 
  */
 @Entity
-@Table(name="audits")
-@NamedQuery(name="Audit.findAll", query="SELECT a FROM Audit a")
+@Table(name = "audits")
 public class Audit implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,13 +29,13 @@ public class Audit implements Serializable {
 	@Column(name = "date")
 	private Date date;
 
-	@Column(name="ip_address")
+	@Column(name = "ip_address")
 	private String ipAddress;
 
-	@Column(name="table_id")
+	@Column(name = "table_id")
 	private String tableId;
 
-	@Column(name="user_id")
+	@Column(name = "user_id")
 	private String userId;
 
 	public Audit() {

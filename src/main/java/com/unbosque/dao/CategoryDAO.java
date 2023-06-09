@@ -1,5 +1,9 @@
 package com.unbosque.dao;
 
-public interface CategoryDAO {
+import java.util.List;
 
+import com.unbosque.entity.Category;
+
+public interface CategoryDAO {
+	public List<Category> getCategory();
 }

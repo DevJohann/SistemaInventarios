@@ -11,11 +11,11 @@
 </h:head>
 <h:body>
 
-	<h:1>Tabla de auditorias</h:1>
+	<h1>Tabla de auditorias</h1>
 	
 	<p:panel id= "listaAudits" header="Auditorias" style="margin-bottom:20px">
 	<h:form>
-	<p:dataTable var="Audit" value="#{auditBean.audits}" rows="6"
+	<p:dataTable var="audit" value="#{auditBean.audits}" rows="6"
 			paginator="true"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
 			{PreviousPageLink} {PageLinks}
@@ -23,19 +23,19 @@
 			rowsPerPageTemplate="5,10,15">
 			
 			<p:column headerText="Id">
-			<h:outputText value ="#{Audit.id}"/>
+			<h:outputText value ="#{audit.id}"/>
 			</p:column>
 			
 			<p:column headerText="Id usuario">
-			<h:outputText value ="#{Audit.userId}"/>
+			<h:outputText value ="#{audit.userId}"/>
 			</p:column>
 			
 			<p:column headerText="Fecha">
-			<h:outputText value ="#{Audit.date}"/>
+			<h:outputText value ="#{audit.date}"/>
 			</p:column>
 			
 			<p:column headerText="Acción">
-			<h:outputText value ="#{Audit.action}"/>
+			<h:outputText value ="#{audit.action}"/>
 			</p:column>
 			
 			<p:column headerText="Id tabla">
@@ -43,7 +43,7 @@
 			</p:column>
 			
 			<p:column headerText="IP">
-			<h:outputText value ="#{Audit.ipAddress}"/>
+			<h:outputText value ="#{audit.ipAddress}"/>
 			</p:column>
 			
 	</p:dataTable>
