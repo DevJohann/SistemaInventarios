@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html;
+	charset=utf-8" />
+	<title>Tabla auditoria</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		
+		Id usuario: <h:inputText value="#{auditBean.audit.userId}" /> 
+		<p:outputLabel for="fecha" value="Fecha: " />
+		<p:datePicker id="fecha" value="#{auditBean.audit.date}" />
+		Acción: <h:inputText value="#{auditBean.audit.action}" />
+		Id de la tabla: <h:inputText value="#{auditBean.audit.tableId}" />
+		Dirección ip: <h:inputText value="#{auditBean.audit.ipAddress}" />
+		
+		<h:commandButton action="#{auditBean.realizarUpdate}" value="Actualizar" />
+		
+	</h:form>
+	
+	<h:form>
+	<h:commandButton action="listarAuditorias" value="Volver" />
+	</h:form>
+
+</h:body>
+</html>

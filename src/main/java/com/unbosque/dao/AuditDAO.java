@@ -8,4 +8,6 @@ public interface AuditDAO {
 
 	public List<Audit> getAudits();
 	
+	public void update(Audit audit);
+	
 }
