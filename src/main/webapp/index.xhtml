@@ -5,13 +5,31 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Inventario</title>
+	
 </h:head>
 <h:body>
-	<h1>INVENTARIO</h1>
-	<h:form>
-		<h:commandButton value="Iniciar sesión" action="login"/>
-		<h:commandButton value="Registrarse" action="nuevoRegistro"/>
-	</h:form>
+	
+	<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-image: url('images/Bindex.jpg'); background-size: cover;">
+    <h:form style="width: 300px;">
+        <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+        <h5 class="mt-0"> </h5>
+        <p:panel header="S1ST3INV3NT4R10S" footer="By: R00TS0FTW0RkS" style="text-align: center;">
+            <p class="m-0">
+            
+            	<p:commandButton value="Iniciar Sesión" styleClass="ui-button-raised ui-button-secondary" action="login" />
+            
+                <p:commandButton value="Registrarse" styleClass="ui-button-raised ui-button-secondary" action="nuevoRegistro" />
+            </p>
+        </p:panel>
+    </h:form>
+</div>
+
+<style>
+    button.ui-button {
+        margin-right: .5rem;
+    }
+</style>
+
 </h:body>
 </html>
