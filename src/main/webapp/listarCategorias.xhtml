@@ -10,9 +10,9 @@
 <h:body>
 	<h1>Tabla de categorías</h1>
 	.
-	<p:panel id= "listaCat" header="Categorías" style="margin-bottom:20px">
+	<p:panel id= "lista" header="Categorias" style="margin-bottom:20px">
 	<h:form>
-	<p:dataTable var="category" value="#{categoryBean.categoryList}" rows="3"
+	<p:dataTable var="category" value="#{categoryBean.listarCategoria}" rows="4"
 			paginator="true"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
 			{PreviousPageLink} {PageLinks}
@@ -29,6 +29,10 @@
 			
 			<p:column headerText="Estado">
 			<h:outputText value ="#{category.catStatus}"/>
+			</p:column>
+			
+			<p:column headerText="Acciones">
+			<h:commandButton value="Modificar" action="#{categoryBean.prepararUpdate}" />
 			</p:column>
 			
 	</p:dataTable>

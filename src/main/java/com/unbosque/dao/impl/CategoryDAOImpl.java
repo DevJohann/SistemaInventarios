@@ -16,7 +16,16 @@ public class CategoryDAOImpl implements CategoryDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		List list = session.createQuery("from Category").list();
+		t.commit();
 		return list;
+	}
+
+	@Override
+	public void update(Category category) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.update(category);
+		t.commit();
 	}
 
 }
