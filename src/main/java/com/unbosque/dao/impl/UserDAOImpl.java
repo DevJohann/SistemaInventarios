@@ -50,4 +50,13 @@ public class UserDAOImpl implements UserDAO {
 		t.commit();
 	}
 
+	@Override
+	public List<User> getUsers() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		List users = session.createQuery("from User").list();
+		t.commit();
+		return users;
+	}
+
 }

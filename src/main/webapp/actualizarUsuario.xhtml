@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html;
+	charset=utf-8" />
+	<title>Usuario</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		
+		Login: <h:inputText value="#{userBean.user.login}" /> 
+		Contraseña: <h:inputText value="#{userBean.user.psswd}" />
+		Tipo de usuario: <h:selectOneMenu value="#{userBean.user.userType}">
+			<f:selectItems value="#{userBean.userTypes}"></f:selectItems>
+		</h:selectOneMenu>
+		Nombre: <h:inputText value="#{userBean.user.userName}" />
+		Apellido: <h:inputText value="#{userBean.user.userSurname}" />
+		Email: <h:inputText value="#{userBean.user.userEmail}" />
+		<p:outputLabel for="fecha" value="Fecha última contraseña: " />
+		<p:datePicker id="fecha" value="#{userBean.user.lastPsswdDate}" />
+		Intentos de contraseña: <h:inputText value="#{userBean.user.psswdAttemps}" />
+		Estado: <h:inputText value="#{userBean.user.userStatus}" />
+		
+		<h:commandButton action="#{userBean.realizarUpdate}" value="Actualizar" />
+		
+	</h:form>
+	
+	<h:form>
+	<h:commandButton action="listarUsuarios" value="Volver" />
+	</h:form>
+
+</h:body>
+</html>
