@@ -2,12 +2,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Login</title>
+	<meta http-equiv="Content-Type" content="text/html;
+	charset=utf-8" />
+	<title>Tabla auditoria</title>
 </h:head>
 <h:body>
 
+	<h:1>Tabla de auditorias</h:1>
+	
+	<p:panel id= "listaAudits" header="Auditorias" style="margin-bottom:20px">
+	<h:form>
+	<p:dataTable var="Audit" value="#{auditBean.audits}" rows="6"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+			{PreviousPageLink} {PageLinks}
+			{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			
+			<p:column headerText="Id">
+			<h:outputText value ="#{Audit.id}"/>
+			</p:column>
+			
+			<p:column headerText="Id usuario">
+			<h:outputText value ="#{Audit.userId}"/>
+			</p:column>
+			
+			<p:column headerText="Fecha">
+			<h:outputText value ="#{Audit.date}"/>
+			</p:column>
+			
+			<p:column headerText="Acción">
+			<h:outputText value ="#{Audit.action}"/>
+			</p:column>
+			
+			<p:column headerText="Id tabla">
+			<h:outputText value ="#{Audit.tableId}"/>
+			</p:column>
+			
+			<p:column headerText="IP">
+			<h:outputText value ="#{Audit.ipAddress}"/>
+			</p:column>
+			
+	</p:dataTable>
+	
+	</h:form>
+	</p:panel>
 	
 </h:body>
 </html>

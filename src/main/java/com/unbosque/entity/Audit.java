@@ -1,4 +1,4 @@
-package com.unbosque.entity;
+	package com.unbosque.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -18,9 +18,11 @@ public class Audit implements Serializable {
 	@Id
 	private int id;
 
+	@Column(name = "action")
 	private String action;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "date")
 	private Date date;
 
 	@Column(name="ip_address")
