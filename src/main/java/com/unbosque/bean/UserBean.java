@@ -96,6 +96,13 @@ public class UserBean {
 		dao.update(user);
 		return "listarUsuarios";
 	}
+	
+	public String eliminarUsuario() {
+		User userTemp = (User)(listaUsuarios.getRowData());
+		UserDAO dao = new UserDAOImpl();
+		dao.remove(userTemp);
+		return "listarUsuarios";
+	}
 
 	public DataModel getListaUsuarios() {
 		return listaUsuarios;

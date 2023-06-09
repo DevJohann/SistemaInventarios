@@ -28,4 +28,12 @@ public class ParameterDAOImpl implements ParameterDAO {
 		t.commit();
 	}
 
+	@Override
+	public void remove(Parameter parameter) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.delete(parameter);
+		t.commit();
+	}
+
 }

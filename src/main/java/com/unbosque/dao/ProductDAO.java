@@ -10,4 +10,6 @@ public interface ProductDAO {
 	
 	public void update(Product products);
 	
+	public void remove(Product product);
+	
 }

@@ -33,6 +33,13 @@ public class ParameterBean {
 		dao.update(parameter);
 		return "listarParametros";
 	}
+	
+	public String eliminarParameter() {
+		Parameter parameterTemp = (Parameter)(listaParametros.getRowData());
+		ParameterDAO dao = new ParameterDAOImpl();
+		dao.remove(parameterTemp);
+		return "listarParametros";
+	}
 
 	public Parameter getParameter() {
 		return parameter;

@@ -1,5 +1,7 @@
 package com.unbosque.bean;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -41,7 +43,7 @@ public class RegisterBean {
 			// User is available
 			User newUser = new User();
 			newUser.setLogin(login);
-			newUser.setPsswd(password);
+			newUser.setPsswd(encryptPassword(password, "MD5"));
 			newUser.setUserType("E");
 			newUser.setUserName(name);
 			newUser.setUserSurname(surname);
@@ -54,6 +56,32 @@ public class RegisterBean {
 			userDAO.save(newUser);
 			return "index";
 		}
+	}
+
+	public String encryptPassword(String psswd, String algorithm) {
+		byte[] digest = null;
+		byte[] buffer = psswd.getBytes();
+		try {
+			MessageDigest messageDigest = MessageDigest.getInstance(algorithm);
+			messageDigest.reset();
+			messageDigest.update(buffer);
+			digest = messageDigest.digest();
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println("Error encriptando la contraseña");
+		}
+		return toHex(digest);
+	}
+
+	private String toHex(byte[] digest) {
+		String hash = "";
+		for (byte aux : digest) {
+			int b = aux & 0xff;
+			if (Integer.toHexString(b).length() == 1) {
+				hash += "0";
+			}
+			hash += Integer.toHexString(b);
+		}
+		return hash;
 	}
 
 	public String getLogin() {

@@ -9,4 +9,6 @@ public interface ParameterDAO {
 	public List<Parameter> getParameters();
 
 	public void update(Parameter parameter);
+	
+	public void remove(Parameter parameter);
 }

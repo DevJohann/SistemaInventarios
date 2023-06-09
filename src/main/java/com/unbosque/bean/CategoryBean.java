@@ -43,6 +43,13 @@ public class CategoryBean {
 		dao.update(category);
 		return "listarCategorias";
 	}
+	
+	public String eliminarCategoria() {
+		Category categoryTemp = (Category)(listaCategorias.getRowData());
+		CategoryDAO dao = new CategoryDAOImpl();
+		dao.remove(categoryTemp);
+		return "listarCategorias";
+	}
 
 	public Category getCategory() {
 		return category;

@@ -59,4 +59,12 @@ public class UserDAOImpl implements UserDAO {
 		return users;
 	}
 
+	@Override
+	public void remove(User user) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.delete(user);
+		t.commit();
+	}
+
 }

@@ -15,4 +15,6 @@ public interface UserDAO {
 	public void save(User user);
 
 	public List<User> getUsers();
+	
+	public void remove(User user);
 }

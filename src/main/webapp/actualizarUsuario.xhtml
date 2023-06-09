@@ -13,10 +13,12 @@
 
 	<h:form>
 		
-		Login: <h:inputText value="#{userBean.user.login}" /> 
+
 		Contraseña: <h:inputText value="#{userBean.user.psswd}" />
 		Tipo de usuario: <h:selectOneMenu value="#{userBean.user.userType}">
-			<f:selectItems value="#{userBean.userTypes}"></f:selectItems>
+			<!--<f:selectItems value="#{userBean.userTypes}"></f:selectItems> -->
+			<f:selectItem itemLabel="Empleado" itemValue="E"></f:selectItem>
+			<f:selectItem itemLabel="Administrador" itemValue="A"></f:selectItem>
 		</h:selectOneMenu>
 		Nombre: <h:inputText value="#{userBean.user.userName}" />
 		Apellido: <h:inputText value="#{userBean.user.userSurname}" />

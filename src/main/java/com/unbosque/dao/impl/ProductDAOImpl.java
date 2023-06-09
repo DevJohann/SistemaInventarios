@@ -28,4 +28,12 @@ public class ProductDAOImpl implements ProductDAO {
 		t.commit();
 	}
 
+	@Override
+	public void remove(Product product) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.delete(product);
+		t.commit();
+	}
+
 }
