@@ -2,32 +2,65 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Inventario</title>
 </h:head>
 <h:body>
 	<h1>REGISTRO</h1>
 	<h:form>
+	<!--  
 		Nombre de usuario: <h:inputText value="#{registerBean.login}" required="true" id="username"></h:inputText>
 		<h:message for="username"></h:message>
+	-->
+		<span class="ui-float-label">
+        	<p:inputText id="username" value="#{registerBean.login}" required="true" requiredMessage="Por favor, ingrese un nombre de usuario"/>
+        	<p:outputLabel for="username" value="Usuario"/>
+   		</span>
+   		<p:message for="username"></p:message>
 		<br/>
-		Contraseña: <h:inputSecret value="#{registerBean.password}" required="true" id="password"></h:inputSecret>
-		<h:message for="password"></h:message>
+		<span class="ui-float-label">
+        	<p:password id="password" value="#{registerBean.password}" toggleMask="true" redisplay="true" required="true" requiredMessage="Por favor, ingrese una contraseña"/>
+        	<p:outputLabel for="password" value="Contraseña"/>
+   		</span>
+		<p:message for="password"></p:message>
 		<br/>
-		Tipo de usuario: <h:selectOneMenu value="#{registerBean.userType}" required="true" id="usertype">
-							<f:selectItems value="#{registerBean.userTypes}"></f:selectItems>
-						</h:selectOneMenu>
-		<h:message for="usertype"></h:message>
+		 <div>
+                <p:outputLabel for="userTypeSelection" value="Tipo de usuario"/>
+                <br/>
+                <p:selectOneMenu id="userTypeSelection" value="#{registerBean.userType}"
+                                hideNoSelectionOption="#{not empty registerBean.userType}" required="true" requiredMessage="Por favor, seleccione una opción">
+                    <p:ajax update="@this" process="@this"/>
+                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Empleado" itemValue="Empleado"/>
+                </p:selectOneMenu>
+            </div>
+            <p:message for="userTypeSelection"></p:message>
 		<br/>
-		Nombre: <h:inputText value="#{registerBean.name}" required="true" id="name"></h:inputText>
-		<h:message for="name"></h:message>
+		<span class="ui-float-label">
+        	<p:inputText id="name" value="#{registerBean.name}" required="true" requiredMessage="Por favor, ingrese su nombre" validatorMessage="Nombre inválido">
+        		<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+        	</p:inputText>
+        	<p:outputLabel for="name" value="Usuario"/>
+   		</span>
+		<p:message for="name"></p:message>
 		<br/>
-		Apellido: <h:inputText value="#{registerBean.surname}" required="true" id="surname"></h:inputText>
-		<h:message for="surname"></h:message>
+		<span class="ui-float-label">
+        	<p:inputText id="surname" value="#{registerBean.surname}" required="true" requiredMessage="Por favor, ingrese su apellido" validatorMessage="Apellido inválido">
+        		<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+        	</p:inputText>
+        	<p:outputLabel for="surname" value="Apellido"/>
+   		</span>
+		<p:message for="surname"></p:message>
 		<br/>
-		Correo: <h:inputText value="#{registerBean.email}" required="true" id="email"></h:inputText>
-		<h:message for="email"></h:message> 
+		<span class="ui-float-label">
+        	<p:inputText id="email" value="#{registerBean.email}" required="true" requiredMessage="Por favor, ingrese su correo" validatorMessage="Ingrese un correo válido">
+				<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+        	</p:inputText>
+        	<p:outputLabel for="email" value="Email"/>
+   		</span>
+		<p:message for="email"></p:message>
 		<br/>
 		<h:commandButton value="Registrarse" action="#{registerBean.registerNewUser}"/>
 	</h:form>
