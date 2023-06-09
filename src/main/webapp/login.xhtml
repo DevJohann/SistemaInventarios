@@ -29,7 +29,7 @@
 						
 						<h:message for="username" styleClass="block ui-state-error" />
 						
-						<div style="display: flex; align-items: center;">
+						<div style="display: flex; align-items: center; margin-bottom: 25px">
 						<span class="ui-float-label">
        							<p:password id="passwordField" value="#{userBean.tempPassVal}" toggleMask="true" redisplay="true"/>
        							<p:outputLabel for="@previous" value="Password"/>
@@ -39,17 +39,16 @@
 						
 					</div>
 					
+					
+         	   		<p:commandButton value="Iniciar Sesión" styleClass="ui-button-raised ui-button-secondary" action="#{userBean.checkLogin}" />	
+					<p:commandButton value="Volver" styleClass="ui-button-raised ui-button-secondary" action="index" />
+					
 				</p>
 				
 			</p:panel>
 			
 		</h:form>
 	</div>
-	
-	<h:form>
-	 		<p:commandButton value="Volver" styleClass="ui-button-raised ui-button-secondary" action="index" />
-            <p:commandButton value="Iniciar Sesión" styleClass="ui-button-raised ui-button-secondary" action="#{userBean.checkLogin}" />	
-	</h:form>
           
 </h:body>
 </html>
