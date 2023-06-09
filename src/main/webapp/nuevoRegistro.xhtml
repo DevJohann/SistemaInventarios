@@ -12,10 +12,10 @@
 		Nombre de usuario: <h:inputText value="#{registerBean.login}" required="true" id="username"></h:inputText>
 		<h:message for="username"></h:message>
 		<br/>
-		Contraseña: <h:inputSecret value="#{registerBean.login}" required="true" id="password"></h:inputSecret>
+		Contraseña: <h:inputSecret value="#{registerBean.password}" required="true" id="password"></h:inputSecret>
 		<h:message for="password"></h:message>
 		<br/>
-		Tipo de usuario: <h:selectOneMenu value="#{registerBean.login}" required="true" id="usertype">
+		Tipo de usuario: <h:selectOneMenu value="#{registerBean.userType}" required="true" id="usertype">
 							<f:selectItems value="#{registerBean.userTypes}"></f:selectItems>
 						</h:selectOneMenu>
 		<h:message for="usertype"></h:message>

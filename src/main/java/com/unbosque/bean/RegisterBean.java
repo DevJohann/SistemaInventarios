@@ -3,14 +3,14 @@ package com.unbosque.bean;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 import com.unbosque.dao.UserDAO;
 import com.unbosque.dao.impl.UserDAOImpl;
 import com.unbosque.entity.User;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class RegisterBean {
 
 	private String login;
