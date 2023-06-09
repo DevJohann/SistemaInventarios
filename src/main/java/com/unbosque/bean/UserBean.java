@@ -1,9 +1,13 @@
 package com.unbosque.bean;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 import com.unbosque.dao.UserDAO;
 import com.unbosque.dao.impl.UserDAOImpl;
@@ -16,6 +20,11 @@ public class UserBean {
 	private String tempLoginVal;
 	private String tempPassVal;
 
+	private DataModel listaUsuarios;
+	private User user;
+
+	private String[] userTypes = { "Empleado", "Administrador" };
+
 	public UserBean() {
 		// TODO Auto-generated constructor stub
 	}
@@ -23,13 +32,6 @@ public class UserBean {
 	public String checkLogin() {
 		UserDAO userDAO = new UserDAOImpl();
 		// Retrieving params
-		/*
-		 * FacesContext fc = FacesContext.getCurrentInstance(); ExternalContext ex =
-		 * fc.getExternalContext(); Map<String, String> params =
-		 * ex.getRequestParameterMap(); System.out.println(params.get("login") +
-		 * params.get("password")); User user =
-		 * userDAO.retrieveUser(params.get("login"), params.get("password"));
-		 */
 		// System.out.println(tempLoginVal + tempPassVal);
 		User user = userDAO.retrieveUser(tempLoginVal, tempPassVal);
 		if (user != null) {
@@ -76,6 +78,47 @@ public class UserBean {
 			userDAO.update(userNotValid);
 			return "login";
 		}
+	}
+
+	public DataModel getListarUsuarios() {
+		List<User> lista = new UserDAOImpl().getUsers();
+		listaUsuarios = new ListDataModel(lista);
+		return listaUsuarios;
+	}
+
+	public String prepararUpdate() {
+		user = (User) listaUsuarios.getRowData();
+		return "actualizarUsuario";
+	}
+
+	public String realizarUpdate() {
+		UserDAO dao = new UserDAOImpl();
+		dao.update(user);
+		return "listarUsuarios";
+	}
+
+	public DataModel getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	public void setListaUsuarios(DataModel listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String[] getUserTypes() {
+		return userTypes;
+	}
+
+	public void setUserTypes(String[] userTypes) {
+		this.userTypes = userTypes;
 	}
 
 	public String getTempLoginVal() {

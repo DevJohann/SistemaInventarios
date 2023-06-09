@@ -40,7 +40,7 @@ public class AuditBean {
 		dao.update(audit);
 		return "listarAuditorias";
 	}
-
+	
 	public Audit getAudit() {
 		return audit;
 	}

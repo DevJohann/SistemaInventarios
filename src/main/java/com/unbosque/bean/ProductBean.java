@@ -18,12 +18,12 @@ public class ProductBean {
 	
 	private DataModel listaProductos;
 	private Product product = new Product();
-
+/*
 	public List<Product> getProducts() {
 		ProductDAOImpl productDao = new ProductDAOImpl();
 		List<Product> products = productDao.getProducts();
 		return products;
-	}
+	}*/
 	
 	public String prepararUpdate() {
 		product = (Product) (listaProductos.getRowData());
