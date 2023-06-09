@@ -40,7 +40,7 @@ public class UserBean {
 				user.setPsswdAttemps(0);
 				userDAO.update(user);
 				// Check user status
-				System.out.println(user.getUserType().equals("E"));
+				// System.out.println(user.getUserType().equals("E"));
 				if (user.getUserType().equals("E")) {
 					// Employee view
 					return "VistaEmpleado";
