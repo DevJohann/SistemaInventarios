@@ -16,6 +16,7 @@ public class AuditDAOImpl implements AuditDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		List list = session.createQuery("from Audit").list();
+		t.commit();
 		return list;
 	}
 

@@ -11,11 +11,9 @@
 </h:head>
 <h:body>
 
-	<h1>Tabla de auditorias</h1>
-	
-	<p:panel id= "listaAudits" header="Auditorias" style="margin-bottom:20px">
+	<p:panel id= "lista" header="Auditorias" style="margin-bottom:20px">
 	<h:form>
-	<p:dataTable var="audit" value="#{auditBean.audits}" rows="6"
+	<p:dataTable var="audit" value="#{auditBean.listarAuditorias}" rows="10"
 			paginator="true"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
 			{PreviousPageLink} {PageLinks}
@@ -39,11 +37,15 @@
 			</p:column>
 			
 			<p:column headerText="Id tabla">
-			<h:outputText value ="#{Audit.tableId}"/>
+			<h:outputText value ="#{audit.tableId}"/>
 			</p:column>
 			
-			<p:column headerText="IP">
+			<p:column headerText="Dirección IP">
 			<h:outputText value ="#{audit.ipAddress}"/>
+			</p:column>
+			
+			<p:column headerText="Acciones">
+			<h:commandButton value="Modificar" action="#{auditBean.prepararUpdate}" />
 			</p:column>
 			
 	</p:dataTable>
