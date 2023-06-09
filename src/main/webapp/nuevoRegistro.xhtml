@@ -4,70 +4,96 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Inventario</title>
-</h:head>
-<h:body>
-	<h1>REGISTRO</h1>
-	<h:form>
-	<!--  
-		Nombre de usuario: <h:inputText value="#{registerBean.login}" required="true" id="username"></h:inputText>
-		<h:message for="username"></h:message>
-	-->
-		<span class="ui-float-label">
-        	<p:inputText id="username" value="#{registerBean.login}" required="true" requiredMessage="Por favor, ingrese un nombre de usuario"/>
-        	<p:outputLabel for="username" value="Usuario"/>
-   		</span>
-   		<p:message for="username"></p:message>
-		<br/>
-		<span class="ui-float-label">
-        	<p:password id="password" value="#{registerBean.password}" toggleMask="true" redisplay="true" required="true" requiredMessage="Por favor, ingrese una contraseña"/>
-        	<p:outputLabel for="password" value="Contraseña"/>
-   		</span>
-		<p:message for="password"></p:message>
-		<br/>
-		 <div>
-                <p:outputLabel for="userTypeSelection" value="Tipo de usuario"/>
-                <br/>
-                <p:selectOneMenu id="userTypeSelection" value="#{registerBean.userType}"
-                                hideNoSelectionOption="#{not empty registerBean.userType}" required="true" requiredMessage="Por favor, seleccione una opción">
-                    <p:ajax update="@this" process="@this"/>
-                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
-                    <f:selectItem itemLabel="Empleado" itemValue="Empleado"/>
-                </p:selectOneMenu>
-            </div>
-            <p:message for="userTypeSelection"></p:message>
-		<br/>
-		<span class="ui-float-label">
-        	<p:inputText id="name" value="#{registerBean.name}" required="true" requiredMessage="Por favor, ingrese su nombre" validatorMessage="Nombre inválido">
-        		<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
-        	</p:inputText>
-        	<p:outputLabel for="name" value="Usuario"/>
-   		</span>
-		<p:message for="name"></p:message>
-		<br/>
-		<span class="ui-float-label">
-        	<p:inputText id="surname" value="#{registerBean.surname}" required="true" requiredMessage="Por favor, ingrese su apellido" validatorMessage="Apellido inválido">
-        		<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
-        	</p:inputText>
-        	<p:outputLabel for="surname" value="Apellido"/>
-   		</span>
-		<p:message for="surname"></p:message>
-		<br/>
-		<span class="ui-float-label">
-        	<p:inputText id="email" value="#{registerBean.email}" required="true" requiredMessage="Por favor, ingrese su correo" validatorMessage="Ingrese un correo válido">
-				<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
-        	</p:inputText>
-        	<p:outputLabel for="email" value="Email"/>
-   		</span>
-		<p:message for="email"></p:message>
-		<br/>
-		<h:commandButton value="Registrarse" action="#{registerBean.registerNewUser}"/>
-	</h:form>
-	<h:form>
-		<h:commandButton value="Volver" action="index"/>
-	</h:form>
+
+	<h:head>
 	
-	
-</h:body>
+	</h:head>
+
+	<h:body>
+
+		<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-image: url('images/Bindex.jpg'); background-size: cover;">
+
+			<h:form style="width: 300px;">
+
+				<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+				<h5 class="mt-0"> </h5>
+				<p:panel header="R3G1STR4RS3" footer=" " style="text-align: center;">
+
+					<p class="m-0">
+
+						<span class="ui-float-label">
+							<p:inputText id="username" value="#{registerBean.login}" required="true" requiredMessage="Por favor, ingrese un nombre de usuario"/>
+							<p:outputLabel for="username" value="Usuario"/>
+						</span>
+
+						<p:message for="username"></p:message>
+
+						<br/>
+
+						<span class="ui-float-label">
+							<p:password id="password" value="#{registerBean.password}" toggleMask="true" redisplay="true" required="true" requiredMessage="Por favor, ingrese una contraseña"/>
+							<p:outputLabel for="password" value="Contraseña"/>
+						</span>
+
+						<p:message for="password"></p:message>
+
+						<br/>
+
+						<div>
+							<p:outputLabel for="userTypeSelection" value="Tipo de usuario"/>
+							<br/>
+							<p:selectOneMenu id="userTypeSelection" value="#{registerBean.userType}"
+								hideNoSelectionOption="#{not empty registerBean.userType}" required="true" requiredMessage="Por favor, seleccione una opción">
+								<p:ajax update="@this" process="@this"/>
+								<f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
+								<f:selectItem itemLabel="Empleado" itemValue="Empleado"/>
+							</p:selectOneMenu>
+						</div>
+						<p:message for="userTypeSelection"></p:message>
+						<br/>
+
+						<span class="ui-float-label">
+							<p:inputText id="name" value="#{registerBean.name}" required="true" requiredMessage="Por favor, ingrese su nombre" validatorMessage="Nombre inválido">
+								<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+							</p:inputText>
+							<p:outputLabel for="name" value="Nombre"/>
+						</span>
+
+						<p:message for="name"></p:message>
+
+						<br/>
+						<span class="ui-float-label">
+							<p:inputText id="surname" value="#{registerBean.surname}" required="true" requiredMessage="Por favor, ingrese su apellido" validatorMessage="Apellido inválido">
+								<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+							</p:inputText>
+							<p:outputLabel for="surname" value="Apellido"/>
+						</span>
+
+						<p:message for="surname"></p:message>
+
+						<br/>
+
+						<span class="ui-float-label">
+							<p:inputText id="email" value="#{registerBean.email}" required="true" requiredMessage="Por favor, ingrese su correo" validatorMessage="Ingrese un correo válido">
+								<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+							</p:inputText>
+							<p:outputLabel for="email" value="Email"/>
+						</span>
+
+						<p:message for="email"></p:message>
+
+					</p>
+
+				</p:panel>
+
+			</h:form>
+		</div>
+
+		<h:form>
+		<p:commandButton value="Registrarse" styleClass="ui-button-raised ui-button-secondary" action="#{registerBean.registerNewUser}" />
+		<p:commandButton value="Volver" styleClass="ui-button-raised ui-button-secondary" action="index" />
+		</h:form>
+
+	</h:body>
 </html>
