@@ -11,7 +11,7 @@
 	<meta http-equiv="Content-Type" content="text/html;
 	charset=utf-8" />
 	
-	<title>Productos</title>
+	<title>Portal de empleado</title>
 	
 	</h:head>
 	
@@ -19,7 +19,7 @@
 	
 	<p:panel id= "lista" header="Productos" style="margin-bottom:20px">
 	<h:form>
-	<p:dataTable var="User" value="#{}" rows="10"
+	<p:dataTable var="User" value="#{productBean.products}" rows="10"
 			paginator="true"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
 			{PreviousPageLink} {PageLinks}
@@ -38,7 +38,7 @@
 			<h:outputText value ="#{User.CatId}"/>
 			</p:column>
 			
-			<p:column headerText="Descuento Del 	Producto">
+			<p:column headerText="Descuento Del Producto">
 			<h:outputText value ="#{User.DescuentoDelProducto}"/>
 			</p:column>
 			
