@@ -20,5 +20,13 @@ public class AuditDAOImpl implements AuditDAO {
 		return list;
 	}
 
+	@Override
+	public void update(Audit audit) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.update(audit);
+		t.commit();
+	}
+
 	
 }

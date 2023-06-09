@@ -2,11 +2,51 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Login</title>
+	<title>Parámetros</title>
 </h:head>
 <h:body>
+
+<h1>Tabla de parámetros</h1>
+	
+	<p:panel id= "listaPara" header="Parámetros" style="margin-bottom:20px">
+	<h:form>
+	<p:dataTable var="parameter" value="#{parameterBean.listarProductos}" rows="6"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+			{PreviousPageLink} {PageLinks}
+			{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			
+			<p:column headerText="Id">
+			<h:outputText value ="#{parameter.id}"/>
+			</p:column>
+			
+			<p:column headerText="Nombre">
+			<h:outputText value ="#{parameter.paramName}"/>
+			</p:column>
+			
+			<p:column headerText="Descripción">
+			<h:outputText value ="#{parameter.paramDesc}"/>
+			</p:column>
+			
+			<p:column headerText="Valor">
+			<h:outputText value ="#{parameter.paramValue}"/>
+			</p:column>
+			
+			<p:column headerText="Estado">
+			<h:outputText value ="#{parameter.paramStatus}"/>
+			</p:column>
+			
+			<p:column headerText="Acciones">
+				<h:commandButton value="Modificar" action="#{parameterBean.prepararUpdate}" />
+			</p:column>
+			
+	</p:dataTable>
+	</h:form>
+	</p:panel>
 
 </h:body>
 </html>
