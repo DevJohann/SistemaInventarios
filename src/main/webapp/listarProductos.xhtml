@@ -11,59 +11,61 @@
 
 <p:panel id= "lista" header="Productos" style="margin-bottom:20px">
 	<h:form>
-	<p:dataTable var="User" value="#{productBean.products}" rows="10"
+	<p:dataTable var="product" value="#{productBean.products}" rows="10"
 			paginator="true"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
 			{PreviousPageLink} {PageLinks}
 			{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="5,10,15">
 			
-			<p:column headerText="Id">
-			<h:outputText value ="#{User.UserId}"/>
+			<p:column headerText="ID">
+			<h:outputText value ="#{product.id}"/>
 			</p:column>
 			
 			<p:column headerText="Referencia Del Producto">
-			<h:outputText value ="#{User.ReferenciaDelProducto}"/>
+			<h:outputText value ="#{product.productRef}"/>
 			</p:column>
 			
-			<p:column headerText="Cat Id">
-			<h:outputText value ="#{User.CatId}"/>
+			<p:column headerText="ID de categoría">
+			<h:outputText value ="#{product.catId}"/>
 			</p:column>
 			
+			<!--  
 			<p:column headerText="Descuento Del Producto">
 			<h:outputText value ="#{User.DescuentoDelProducto}"/>
 			</p:column>
+			-->
 			
 			<p:column headerText="Stock Producto">
-			<h:outputText value ="#{User.StockProducto}"/>
+			<h:outputText value ="#{product.productStock}"/>
 			</p:column>
 			
-			<p:column headerText="Stock Mínimo Producto">
-			<h:outputText value ="#{User.StockMínimoProducto}"/>
+			<p:column headerText="Stock Mínimo">
+			<h:outputText value ="#{product.minimumStock}"/>
 			</p:column>
 			
-			<p:column headerText="Stock Máximo Producto">
-			<h:outputText value ="#{User.StockMáximoProducto}"/>
+			<p:column headerText="Stock Máximo">
+			<h:outputText value ="#{product.maximumStock}"/>
 			</p:column>
 			
 			<p:column headerText="Iva Producto">
-			<h:outputText value ="#{User.IvaProducto}"/>
+			<h:outputText value ="#{product.hasIva}"/>
 			</p:column>
 			
-			<p:column headerText="Precio Venta Producto">
-			<h:outputText value ="#{User.PrecioVentaProducto}"/>
+			<p:column headerText="Precio Venta">
+			<h:outputText value ="#{product.sellPrice}"/>
 			</p:column>
 			
-			<p:column headerText="Precio Compra Producto">
-			<h:outputText value ="#{User.PrecioCompraProducto}"/>
+			<p:column headerText="Precio Compra">
+			<h:outputText value ="#{product.buyPrice}"/>
 			</p:column>
 			
-			<p:column headerText="Estado Del Producto">
-			<h:outputText value ="#{User.EstadoDelProducto}"/>
+			<p:column headerText="Estado">
+			<h:outputText value ="#{product.productStatus}"/>
 			</p:column>
 			
-			<p:column headerText="FechaVenc Producto">
-			<h:outputText value ="#{User.FechaVencProducto}"/>
+			<p:column headerText="Fecha de Vencimiento">
+			<h:outputText value ="#{product.dueDate}"/>
 			</p:column>
 			
 	</p:dataTable>

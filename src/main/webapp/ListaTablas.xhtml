@@ -9,5 +9,30 @@
 </h:head>
 <h:body>
 
+	<h1>Portal administrador</h1>
+	
+	<fieldset>
+	
+	<LEGEND>Cuál tabla desea ver</LEGEND>
+	
+	<h:form>
+	
+		<h:commandButton value="Auditorias" action="listarAuditorias" />
+		
+		<h:commandButton value="Categorias" action="listarCategorias" />
+		
+		<h:commandButton value="Parametros" action="listarParametros" />
+		
+		<h:commandButton value="Productos" action="listarProductos" />
+		
+		<h:commandButton value="Usuarios" action="listarUsuarios" />
+		
+		
+		<h:commandButton value="Volver" action="login" />
+	
+	</h:form>
+
+	</fieldset>
+
 </h:body>
 </html>

@@ -46,7 +46,7 @@ public class UserBean {
 					return "VistaEmpleado";
 				}
 				// Admin view
-				return "listarProductos";
+				return "ListaTablas";
 			} else {
 				// Cannot log in: User not available
 				return "login";
