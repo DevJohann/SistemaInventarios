@@ -1,55 +1,59 @@
 package com.unbosque.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the products database table.
  * 
  */
 @Entity
-@Table(name="products")
-@NamedQuery(name="Product.findAll", query="SELECT p FROM Product p")
+@Table(name = "products")
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int id;
 
-	@Column(name="buy_price")
+	@Column(name = "buy_price")
 	private int buyPrice;
 
-	@Column(name="cat_id")
+	@Column(name = "cat_id")
 	private int catId;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="due_date")
+	@Column(name = "due_date")
 	private Date dueDate;
 
-	@Column(name="has_iva")
+	@Column(name = "has_iva")
 	private byte hasIva;
 
-	@Column(name="maximum_stock")
+	@Column(name = "maximum_stock")
 	private int maximumStock;
 
-	@Column(name="minimum_stock")
+	@Column(name = "minimum_stock")
 	private int minimumStock;
 
-	@Column(name="product_desc")
+	@Column(name = "product_desc")
 	private String productDesc;
 
-	@Column(name="product_ref")
+	@Column(name = "product_ref")
 	private String productRef;
 
-	@Column(name="product_status")
+	@Column(name = "product_status")
 	private byte productStatus;
 
-	@Column(name="product_stock")
+	@Column(name = "product_stock")
 	private int productStock;
 
-	@Column(name="sell_price")
+	@Column(name = "sell_price")
 	private int sellPrice;
 
 	public Product() {
