@@ -11,7 +11,7 @@
 
 <p:panel id= "lista" header="Productos" style="margin-bottom:20px">
 	<h:form>
-	<p:dataTable var="product" value="#{productBean.products}" rows="10"
+	<p:dataTable var="product" value="#{productBean.listarProductos}" rows="11"
 			paginator="true"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
 			{PreviousPageLink} {PageLinks}
@@ -66,6 +66,10 @@
 			
 			<p:column headerText="Fecha de Vencimiento">
 			<h:outputText value ="#{product.dueDate}"/>
+			</p:column>
+			
+			<p:column headerText="Acciones" >
+			<h:commandButton value="Modificar" action="#{productBean.prepararUpdate}" />
 			</p:column>
 			
 	</p:dataTable>

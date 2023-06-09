@@ -22,7 +22,6 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public void update(Product products) {
-		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		session.update(products);

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Actualizar productos</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		
+		Referencia del producto: <h:inputText value="#{productBean.product.productRef}" />
+		Id categoria: <h:inputText value="#{productBean.product.catId}" />
+		Descripción producto: <h:inputText value="#{productBean.product.productDesc}" />
+		Stock producto:<h:inputText value="#{productBean.product.productStock}" />
+		Stock minimo:  <h:inputText value="#{productBean.product.minimumStock}" />
+		Stock máximo: <h:inputText value="#{productBean.product.maximumStock}" />
+		Tiene iva: <h:inputText value="#{productBean.product.hasIva}" />
+		Precio de venta: <h:inputText value="#{productBean.product.sellPrice}" />
+		Precio de compra: <h:inputText value="#{productBean.product.buyPrice}" /> 
+		Estado: <h:inputText value="#{productBean.product.productStatus}" />
+		Fecha de vencimiento: <h:inputText value="#{productBean.product.dueDate}" />
+		
+		<h:commandButton value="Modificar" action="#{productBean.realizarUpdate}" />
+		
+	</h:form>
+	
+	<h:form>
+		<h:commandButton value="Volver" action="listarProductos" />
+	</h:form>
+
+</h:body>
+</html>
