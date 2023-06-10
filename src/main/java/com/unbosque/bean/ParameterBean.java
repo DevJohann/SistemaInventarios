@@ -23,6 +23,10 @@ public class ParameterBean {
 	private DataModel listaParametros;
 	private Parameter parameter;
 
+	public ParameterBean() {
+		
+	}
+	
 	public DataModel getListarProductos() {
 		List<Parameter> lista = new ParameterDAOImpl().getParameters();
 		listaParametros = new ListDataModel(lista);
@@ -87,7 +91,7 @@ public class ParameterBean {
 	
 	public String realizarInsert() {
 		ParameterDAO dao = new ParameterDAOImpl();
-		dao.save(parameter);
+		dao.update(parameter);
 		return "listarParametros";
 	}
 

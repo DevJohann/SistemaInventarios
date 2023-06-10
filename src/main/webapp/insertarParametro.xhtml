@@ -9,20 +9,23 @@
 </h:head>
 <h:body>
 
-<h1>Insertar parámetros</h1>
-
 <h:form>
 
 Nombre parámetro: <h:inputText value="#{parameterBean.parameter.paramName}" />
 Descripción: <h:inputText value="#{parameterBean.parameter.paramDesc}" />
 Valor parámetro: <h:inputText value="#{parameterBean.parameter.paramValue}" />
-Estado parámetro: <h:inputText value="#{parameterBean.parameter.paramStatus}" /> 
+Estado parámetro: <h:selectOneMenu>
+	<f:selectItem itemLabel="Activo" itemValue="1"></f:selectItem>
+	<f:selectItem itemLabel="Inactivo" itemValue="0"></f:selectItem>
+</h:selectOneMenu>
 
 <h:commandButton action="#{parameterBean.realizarInsert}" value="Insertar" />
 
 </h:form>
 
+<h:form>
 <h:commandButton value="Volver" action="listarParametros" />
+</h:form>
 
 </h:body>
 </html>
