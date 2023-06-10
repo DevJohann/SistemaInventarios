@@ -130,17 +130,46 @@ public class UserBean {
 	public String realizarUpdate() {
 		RegisterBean rb = new RegisterBean();
 		UserDAO dao = new UserDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
+
 		user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
 		user.setLastPsswdDate(new Date());
 		dao.update(user);
+
+		// Audit register
+		audit.setUserId(user.getLogin());
+		audit.setDate(new Date());
+		audit.setAction("U");
+		audit.setTableId("users");
+		try {
+			audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "listarUsuarios";
 	}
 
 	public String eliminarUsuario() {
 		User userTemp = (User) (listaUsuarios.getRowData());
 		UserDAO dao = new UserDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
 		userTemp.setUserStatus(false);
 		dao.update(userTemp);
+
+		// Audit register
+		audit.setUserId(user.getLogin());
+		audit.setDate(new Date());
+		audit.setAction("D");
+		audit.setTableId("users");
+		try {
+			audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "listarUsuarios";
 	}
 
@@ -156,9 +185,24 @@ public class UserBean {
 	public String realizarInsert() {
 		UserDAO dao = new UserDAOImpl();
 		RegisterBean rb = new RegisterBean();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
+
 		if (dao.retrieveUser(user.getLogin()) == null) {
 			user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
 			dao.save(user);
+
+			// Audit register
+			audit.setUserId(user.getLogin());
+			audit.setDate(new Date());
+			audit.setAction("U");
+			audit.setTableId("users");
+			try {
+				audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return "listarUsuarios";
 		}
 		return "insertarUsuario";
