@@ -11,21 +11,51 @@
 
 <h:form>
 	
-	Referencia producto: <h:inputText value="#{productBean.product.productRef}" />
-	Id categoria: <h:inputText value="#{productBean.product.catId}" />
-	Descuento producto: <h:inputText value="#{productBean.product.productDesc}" />
-	Stock producto: <h:inputText value="#{productBean.product.productStock}" />
-	Stock minimo: <h:inputText value="#{productBean.product.minimumStock}" />
-	Stock máximo: <h:inputText value="#{productBean.product.maximumStock}" />
+	Referencia producto: <h:inputText value="#{productBean.product.productRef}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	
+							<f:validateRegex pattern="/^(0|[1-9]\d*)$/"></f:validateRegex>
+						</h:inputText>
+	Id categoria: <h:inputText value="#{productBean.product.catId}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	
+					<f:validateRegex pattern="/^(0|[1-9]\d*)$/"></f:validateRegex>
+					</h:inputText>
+					
+	Descuento producto: <h:inputText value="#{productBean.product.productDesc}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	
+						<f:validateRegex pattern="/^(0|[1-9]\d*)$/"></f:validateRegex>
+						</h:inputText>
+						
+	Stock producto: <h:inputText value="#{productBean.product.productStock}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	
+					
+					<f:validateRegex pattern="/^(0|[1-9]\d*)$/"></f:validateRegex>
+						</h:inputText>
+						
+	Stock minimo: <h:inputText value="#{productBean.product.minimumStock}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	
+	
+					<f:validateRegex pattern="/^(0|[1-9]\d*)$/"></f:validateRegex>
+						</h:inputText>
+						
+	Stock máximo: <h:inputText value="#{productBean.product.maximumStock}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	
+					<f:validateRegex pattern="/^(0|[1-9]\d*)$/"></f:validateRegex>
+						</h:inputText>
 	
 	Tiene IVA: <h:selectOneMenu value="#{productBean.product.hasIva}" >
 		<f:selectItem itemLabel="Si" itemValue="true" ></f:selectItem>
 		<f:selectItem itemLabel="No" itemValue="false"></f:selectItem>
 	</h:selectOneMenu>
 	
-	Precio de venta: <h:inputText value="#{productBean.product.sellPrice}" />
-	Precio de compra: <h:inputText value="#{productBean.product.buyPrice}" />
+	Precio de venta: <h:inputText value="#{productBean.product.sellPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
 	
+						<f:validateRegex pattern="/^(0|[1-9]\d*)$/"></f:validateRegex>
+						</h:inputText>
+	Precio de compra: <h:inputText value="#{productBean.product.buyPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	
+						<f:validateRegex pattern="/^(0|[1-9]\d*)$/"></f:validateRegex>
+						</h:inputText>
+						
 	Estado producto: <h:selectOneMenu value="#{productBean.product.productStatus}" >
 		<f:selectItem itemLabel="Activo" itemValue="true" ></f:selectItem>
 		<f:selectItem itemLabel="Inactivo" itemValue="false" ></f:selectItem>
