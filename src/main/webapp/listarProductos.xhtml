@@ -10,6 +10,9 @@
 <h:body>
 
 <p:panel id= "lista" header="Productos" style="margin-bottom:20px">
+	<h:form> 
+		<h:commandButton value="Nuevo" action=""></h:commandButton>
+	</h:form>
 	<h:form>
 	<p:dataTable var="product" value="#{productBean.listarProductos}" rows="11"
 			paginator="true"
