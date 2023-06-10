@@ -14,7 +14,7 @@
 	<h:form>
 		
 
-		Tipo de usuario: <h:selectOneMenu value="#{userBean.user.userType}">
+		Tipo de usuario: <h:selectOneMenu value="#{userBean.user.userType}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">>
 			<!--<f:selectItems value="#{userBean.userTypes}"></f:selectItems> -->
 			<f:selectItem itemLabel="Empleado" itemValue="E"></f:selectItem>
 			<f:selectItem itemLabel="Administrador" itemValue="A"></f:selectItem>
