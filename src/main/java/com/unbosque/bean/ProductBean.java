@@ -16,7 +16,7 @@ import com.unbosque.entity.Product;
 public class ProductBean {
 
 	private DataModel listaProductos;
-	private Product product;
+	private Product product = new Product();
 	/*
 	 * public List<Product> getProducts() { ProductDAOImpl productDao = new
 	 * ProductDAOImpl(); List<Product> products = productDao.getProducts(); return
@@ -64,7 +64,7 @@ public class ProductBean {
 		return "insertarProducto";
 	}
 
-	public String getRealizarInsert() {
+	public String realizarInsert() {
 		System.out.println("dlfjs");
 		ProductDAO dao = new ProductDAOImpl();
 		dao.save(product);
