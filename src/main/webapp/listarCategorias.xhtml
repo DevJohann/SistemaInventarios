@@ -42,7 +42,12 @@
 	
 	<h:form>
 	<h:commandButton value="Insertar" action="#{categoryBean.prepararInsertar}" />
-	<h:commandButton value="Volver" action="ListaTablas" />
+	
+	&nbsp;
+	
+		<p:link outcome="ListaTablas" value="Volver">
+	        
+	    </p:link> 
 	</h:form>
 	
 </h:body>
