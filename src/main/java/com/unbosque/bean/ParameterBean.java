@@ -62,7 +62,8 @@ public class ParameterBean {
 		AuditDAO auditDAO = new AuditDAOImpl();
 		Audit audit = new Audit();
 
-		dao.remove(parameterTemp);
+		parameterTemp.setParamStatus("0");
+		dao.update(parameterTemp);
 
 		// Audit register
 		audit.setUserId(parameter.getId() + "");

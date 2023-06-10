@@ -1,35 +1,43 @@
 package com.unbosque.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the parameters database table.
  * 
  */
 @Entity
-@Table(name="parameters")
-@NamedQuery(name="Parameter.findAll", query="SELECT p FROM Parameter p")
+@Table(name = "parameters")
+@NamedQuery(name = "Parameter.findAll", query = "SELECT p FROM Parameter p")
 public class Parameter implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int id;
 
-	@Column(name="param_desc")
+	@Column(name = "param_desc")
 	private String paramDesc;
 
-	@Column(name="param_name")
+	@Column(name = "param_name")
 	private String paramName;
 
-	@Column(name="param_status")
+	@Column(name = "param_status")
 	private String paramStatus;
 
-	@Column(name="param_value")
+	@Column(name = "param_value")
 	private String paramValue;
 
 	public Parameter() {
+	}
+
+	public String getCalculateStatus() {
+		return (paramStatus.equals("1")) ? "ACTIVO" : "INACTIVO";
 	}
 
 	public int getId() {

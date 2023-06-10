@@ -14,7 +14,10 @@
 		Nombre: <h:inputText value="#{parameterBean.parameter.paramName}"></h:inputText>
 		Descripción: <h:inputText value="#{parameterBean.parameter.paramDesc}"></h:inputText>
 		Valor: <h:inputText value="#{parameterBean.parameter.paramValue}"></h:inputText>
-		Estado: <h:inputText value="#{parameterBean.parameter.paramStatus}"></h:inputText>
+		Estado: <h:selectOneMenu value="#{parameterBean.parameter.paramStatus}">
+					<f:selectItem itemValue="1" itemLabel="ACTIVO"></f:selectItem>
+					<f:selectItem itemValue="0" itemLabel="INACTIVO"></f:selectItem>
+				</h:selectOneMenu>
 		<h:commandButton action="#{parameterBean.realizarUpdate}" value="Modificar" />
 		
 	</h:form>
