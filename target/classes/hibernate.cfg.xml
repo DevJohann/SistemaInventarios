@@ -6,11 +6,7 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Inventory</property>
 		<property name="hibernate.connection.username">root</property>
-<<<<<<< HEAD
-		<property name="hibernate.connection.password">admin123</property>
-=======
-		<property name="hibernate.connection.password">Inv13rn0!</property>
->>>>>>> 2d9e65790bb79ba7a7f13eb841e569abdf389ab2
+		<property name="hibernate.connection.password">root</property>
 		<!-- <mapping class="com.unbosque.edu.co.beans.LoginBean"></mapping>-->
 	</session-factory>
 </hibernate-configuration>
