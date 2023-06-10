@@ -156,9 +156,12 @@ public class UserBean {
 	public String realizarInsert() {
 		UserDAO dao = new UserDAOImpl();
 		RegisterBean rb = new RegisterBean();
-		user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
-		dao.save(user);
-		return "listarUsuarios";
+		if(dao.retrieveUser(user.getLogin()) == null) {
+			user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
+			dao.save(user);
+			return "listarUsuarios";
+		}
+		return "insertarUsuario";
 	}
 
 	public DataModel getListaUsuarios() {
