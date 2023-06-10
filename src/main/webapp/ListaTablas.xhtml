@@ -2,37 +2,61 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Tablas</title>
+	<title>ADMIN</title>
 	<h:outputStylesheet library="css" name="resources/css/LoginStyles.css"></h:outputStylesheet>
 </h:head>
 <h:body>
-
-	<h1>Portal administrador</h1>
-	
-	<fieldset>
-	
-	<LEGEND>Cuál tabla desea ver</LEGEND>
 	
 	<h:form>
 	
-		<h:commandButton value="Auditorias" action="listarAuditorias" />
-		
-		<h:commandButton value="Categorias" action="listarCategorias" />
-		
-		<h:commandButton value="Parametros" action="listarParametros" />
-		
-		<h:commandButton value="Productos" action="listarProductos" />
-		
-		<h:commandButton value="Usuarios" action="listarUsuarios" />
-		
-		
-		<h:commandButton value="Volver" action="login" />
+	 <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+    <h5 class="mt-0"></h5>
+    <p:panel header="Opciones Administrador" footer="">
+        <p class="m-0">
+            
+        <div class="card">
+	    <p:link outcome="listarAuditorias" value="Auditorias">
+	        
+	    </p:link>
+	    &nbsp;
+	    
+	    <p:link outcome="listarCategorias" value="Categorias">
+	        
+	    </p:link>
+	    &nbsp;
+	    
+	    <p:link outcome="listarParametros" value="Parametros">
+	        
+	    </p:link>
+	    &nbsp;
+	    
+	    <p:link outcome="listarProductos" value="Productos">
+	        
+	    </p:link>
+	    &nbsp;
+	    
+	    
+	    <p:link outcome="listarUsuarios" value="Usuarios">
+	        
+	    </p:link>
+	    &nbsp;
+	
+		<p:link outcome="login" value="Volver">
+	        
+	    </p:link> 
+	    &nbsp;
+	    
+	    </div>  
+            
+        </p>
+    </p:panel>
 	
 	</h:form>
 
-	</fieldset>
 
 </h:body>
 </html>
