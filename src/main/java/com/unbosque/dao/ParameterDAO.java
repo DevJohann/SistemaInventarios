@@ -11,4 +11,6 @@ public interface ParameterDAO {
 	public void update(Parameter parameter);
 	
 	public void remove(Parameter parameter);
+	
+	public void save(Parameter parameter);
 }
