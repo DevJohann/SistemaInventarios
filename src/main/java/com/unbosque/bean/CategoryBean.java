@@ -50,6 +50,12 @@ public class CategoryBean {
 		dao.remove(categoryTemp);
 		return "listarCategorias";
 	}
+	
+	public String prepararInsertar() {
+		category = new Category();
+		category.setCatStatus((byte) 0);
+		return "insertarCategoria";
+	}
 
 	public Category getCategory() {
 		return category;
