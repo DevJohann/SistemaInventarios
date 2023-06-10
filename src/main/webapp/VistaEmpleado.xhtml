@@ -79,6 +79,10 @@
 			<h:outputText value ="#{product.dueDate}"/>
 			</p:column>
 			
+			<p:column headerText="Restar stock">
+			<h:commandButton action="#{productBean.restarStock}" value="Restar" />
+			</p:column>
+			
 	</p:dataTable>
 	
 	</h:form>

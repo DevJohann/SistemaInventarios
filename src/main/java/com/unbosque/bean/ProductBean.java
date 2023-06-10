@@ -48,6 +48,18 @@ public class ProductBean {
 		dao.remove(productTemp);
 		return "listarProductos";
 	}
+	
+	public String restarStock() {
+		product = (Product) (listaProductos.getRowData());
+		if(product.getProductStock()>=1) {
+			product.setProductStock(product.getProductStock()-1);
+			System.out.println("Ah?");
+			return "vistaEmpleado";
+		}else {
+			System.out.println("sdfkljhdsfkj");
+			return "vistaEmpleado";
+		}
+	}
 
 	public Product getProduct() {
 		return product;

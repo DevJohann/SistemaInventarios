@@ -36,10 +36,7 @@ public class RegisterBean {
 	public String registerNewUser() {
 		UserDAO userDAO = new UserDAOImpl();
 		// Check if user already exists
-		if (userDAO.retrieveUser(login) != null) {
-			// User is not available
-			return "nuevoRegistro";
-		} else {
+		if (userDAO.retrieveUser(login) == null) {
 			// User is available
 			User newUser = new User();
 			newUser.setLogin(login);
@@ -54,7 +51,12 @@ public class RegisterBean {
 			newUser.setUserStatus(true);
 			// Load user to DB
 			userDAO.save(newUser);
+			
 			return "index";
+		} else {
+			System.out.println("Paila");
+			// User is not available
+			return "nuevoRegistro";
 		}
 	}
 
