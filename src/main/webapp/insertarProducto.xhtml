@@ -13,6 +13,8 @@
 	
 	Referencia producto: <h:inputText id="ref" value="#{productBean.product.productRef}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	<h:message for="ref"></h:message>
+	
+	
 	<br/>
 	Id categoria: <h:inputText id="cat" value="#{productBean.product.catId}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	<h:message for="cat"></h:message>
@@ -20,21 +22,25 @@
 	Descripción producto: <h:inputText id="desc" value="#{productBean.product.productDesc}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	<h:message for="desc"></h:message>
 	<br/>
+	  
 	Stock producto: <h:inputText id="stockAc" value="#{productBean.product.productStock}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	<h:message for="stockAc"></h:message>
 	<br/>
+	
 	Stock minimo: <h:inputText id="minStock" value="#{productBean.product.minimumStock}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	<h:message for="minStock"></h:message>
 	<br/>
+	
 	Stock máximo: <h:inputText id="maxStock" value="#{productBean.product.maximumStock}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	<h:message for="maxStock"></h:message>
 	<br/>
 	
 	Tiene IVA: <h:selectOneMenu value="#{productBean.product.hasIva}" >
-		<f:selectItem itemLabel="Si" itemValue="true" ></f:selectItem>
-		<f:selectItem itemLabel="No" itemValue="false"></f:selectItem>
+		<f:selectItem itemLabel="Si" itemValue="1" ></f:selectItem>
+		<f:selectItem itemLabel="No" itemValue="0"></f:selectItem>
 	</h:selectOneMenu>
 	<br/>
+	
 	Precio de venta: <h:inputText id="sell" value="#{productBean.product.sellPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	<h:message for="sell"></h:message>
 	<br/>
@@ -42,8 +48,8 @@
 	<h:message for="buy"></h:message>
 	<br/>
 	Estado producto: <h:selectOneMenu value="#{productBean.product.productStatus}" >
-		<f:selectItem itemLabel="Activo" itemValue="true" ></f:selectItem>
-		<f:selectItem itemLabel="Inactivo" itemValue="false" ></f:selectItem>
+		<f:selectItem itemLabel="Activo" itemValue="1" ></f:selectItem>
+		<f:selectItem itemLabel="Inactivo" itemValue="0" ></f:selectItem>
 	</h:selectOneMenu>
 	<br/>
 
@@ -51,6 +57,7 @@
 	        <p:datePicker id="popup" value="#{productBean.product.dueDate}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	        <h:message for="popup"></h:message>
 	<br/>
+	
 	<h:commandButton value="Insertar producto" action="#{productBean.realizarInsert}"/>
 
 </h:form>
