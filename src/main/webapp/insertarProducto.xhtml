@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Insertar producto</title>
+</h:head>
+<h:body>
+
+<h:form>
+	
+	Referencia producto: <h:inputText value="#{productBean.product.productRef}" />
+	Id categoria: <h:inputText value="#{productBean.product.catId}" />
+	Descuento producto: <h:inputText value="#{productBean.product.productDesc}" />
+	Stock producto: <h:inputText value="#{productBean.product.productStock}" />
+	Stock minimo: <h:inputText value="#{productBean.product.minimumStock}" />
+	Stock máximo: <h:inputText value="#{productBean.product.maximumStock}" />
+	
+	Tiene IVA: <h:selectOneMenu value="#{productBean.product.hasIva}" >
+		<f:selectItem itemLabel="Si" itemValue="true" ></f:selectItem>
+		<f:selectItem itemLabel="No" itemValue="false"></f:selectItem>
+	</h:selectOneMenu>
+	
+	Precio de venta: <h:inputText value="#{productBean.product.sellPrice}" />
+	Precio de compra: <h:inputText value="#{productBean.product.buyPrice}" />
+	
+	Estado producto: <h:selectOneMenu value="#{productBean.product.productStatus}" >
+		<f:selectItem itemLabel="Activo" itemValue="true" ></f:selectItem>
+		<f:selectItem itemLabel="Inactivo" itemValue="false" ></f:selectItem>
+	</h:selectOneMenu>
+	
+	<p:outputLabel for="popup" value="Fecha de vencimiento" />
+	        <p:datePicker id="popup" value="#{productBean.product.dueDate}" />
+
+	<h:commandButton action="#{productBean.realizarInsert}" value="Insertar producto" />
+
+</h:form>
+
+<h:form>
+<h:commandButton value="Volver" action="listarProductos" />
+</h:form>
+
+</h:body>
+</html>
