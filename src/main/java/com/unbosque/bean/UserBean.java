@@ -1,5 +1,7 @@
 package com.unbosque.bean;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.List;
 
@@ -10,8 +12,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
+import com.unbosque.dao.AuditDAO;
 import com.unbosque.dao.UserDAO;
+import com.unbosque.dao.impl.AuditDAOImpl;
 import com.unbosque.dao.impl.UserDAOImpl;
+import com.unbosque.entity.Audit;
 import com.unbosque.entity.User;
 
 @ManagedBean
@@ -32,6 +37,8 @@ public class UserBean {
 
 	public String checkLogin() {
 		UserDAO userDAO = new UserDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
 		// Retrieving params
 		// System.out.println(tempLoginVal + tempPassVal);
 		User user = userDAO.retrieveUser(tempLoginVal, tempPassVal);
@@ -45,9 +52,35 @@ public class UserBean {
 				// Check user status
 				// System.out.println(user.getUserType().equals("E"));
 				if (user.getUserType().equals("E")) {
+
+					// Audit register
+					audit.setUserId(user.getLogin());
+					audit.setDate(new Date());
+					audit.setAction("L");
+					audit.setTableId("users");
+					try {
+						audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+					} catch (UnknownHostException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					auditDAO.save(audit);
 					// Employee view
 					return "VistaEmpleado";
 				}
+				// Audit register
+				audit.setUserId(user.getLogin());
+				audit.setDate(new Date());
+				audit.setAction("L");
+				audit.setTableId("users");
+				try {
+					audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				auditDAO.save(audit);
+
 				// Admin view
 				return "ListaTablas";
 			} else {

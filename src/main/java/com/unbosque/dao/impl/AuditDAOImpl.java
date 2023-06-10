@@ -28,5 +28,13 @@ public class AuditDAOImpl implements AuditDAO {
 		t.commit();
 	}
 
-	
+	@Override
+	public void save(Audit audit) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.save(audit);
+		t.commit();
+
+	}
+
 }
