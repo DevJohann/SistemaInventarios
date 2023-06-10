@@ -50,13 +50,13 @@ public class ProductBean {
 	}
 	
 	public String restarStock() {
+		ProductDAO dao = new ProductDAOImpl();
 		product = (Product) (listaProductos.getRowData());
 		if(product.getProductStock()>=1) {
 			product.setProductStock(product.getProductStock()-1);
-			System.out.println("Ah?");
+			dao.update(product);
 			return "vistaEmpleado";
 		}else {
-			System.out.println("sdfkljhdsfkj");
 			return "vistaEmpleado";
 		}
 	}

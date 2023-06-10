@@ -26,7 +26,11 @@
 		<p:outputLabel for="fecha" value="Fecha última contraseña: " />
 		<p:datePicker id="fecha" value="#{userBean.user.lastPsswdDate}" />
 		Intentos de contraseña: <h:inputText value="#{userBean.user.psswdAttemps}" />
-		Estado: <h:inputText value="#{userBean.user.userStatus}" />
+		
+		Estado: <h:selectOneMenu value="#{userBean.user.userStatus}">
+			<f:selectItem itemLabel="Activo" itemValue="true"></f:selectItem>
+			<f:selectItem itemLabel="Inactivo" itemValue="false"></f:selectItem>
+		</h:selectOneMenu>
 		
 		<h:commandButton action="#{userBean.realizarUpdate}" value="Actualizar" />
 		
@@ -35,6 +39,6 @@
 	<h:form>
 	<h:commandButton action="listarUsuarios" value="Volver" />
 	</h:form>
-
+	
 </h:body>
 </html>
