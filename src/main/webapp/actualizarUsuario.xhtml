@@ -19,17 +19,30 @@
 			<f:selectItem itemLabel="Empleado" itemValue="E"></f:selectItem>
 			<f:selectItem itemLabel="Administrador" itemValue="A"></f:selectItem>
 		</h:selectOneMenu>
-		Nombre: <h:inputText value="#{userBean.user.userName}" />
-		Apellido: <h:inputText value="#{userBean.user.userSurname}" />
-		Email: <h:inputText value="#{userBean.user.userEmail}" />
+		<br/>
+		Nombre: <h:inputText id="name" value="#{userBean.user.userName}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+					<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+		</h:inputText>
+		<h:message for="name"></h:message>
+		<br/>
+		Apellido: <h:inputText id="surname" value="#{userBean.user.userSurname}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+			<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+		</h:inputText>
+		<h:message for="surname"></h:message>
+		<br/>
+		Email: <h:inputText id="mail" value="#{userBean.user.userEmail}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+				<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+			</h:inputText>
+			<h:message for="mail"></h:message>
+			<br/>
 <!--  	<p:outputLabel for="fecha" value="Fecha última contraseña: " />
 		<p:datePicker id="fecha" value="#{userBean.user.lastPsswdDate}" />-->
-		Intentos de contraseña: <h:inputText value="#{userBean.user.psswdAttemps}" />
 		
 		Estado: <h:selectOneMenu value="#{userBean.user.userStatus}">
 			<f:selectItem itemLabel="Activo" itemValue="true"></f:selectItem>
 			<f:selectItem itemLabel="Inactivo" itemValue="false"></f:selectItem>
 		</h:selectOneMenu>
+		<br/>
 		
 		<h:commandButton action="#{userBean.realizarUpdate}" value="Actualizar" />
 		
