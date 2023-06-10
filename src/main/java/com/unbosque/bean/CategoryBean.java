@@ -24,6 +24,8 @@ public class CategoryBean {
 	private Category category = new Category();
 	private DataModel listaCategorias;
 
+	private String actualKey = "";
+
 	/*
 	 * public List<Category> getCategoryList() { CategoryDAO categoryDAO = new
 	 * CategoryDAOImpl(); List<Category> categoryList = categoryDAO.getCategory();
@@ -38,6 +40,7 @@ public class CategoryBean {
 
 	public String prepararUpdate() {
 		category = (Category) (listaCategorias.getRowData());
+		actualKey = category.getCatName();
 		return "actualizarCategoria";
 	}
 
@@ -48,10 +51,12 @@ public class CategoryBean {
 
 		// Check if available
 		List<Category> list = dao.getCategory();
-		for (Category x : list) {
-			if (x.getCatName().equals(category.getCatName())) {
-				// Cant save
-				return "listarCategorias";
+		if (!actualKey.equals(category.getCatName())) {
+			for (Category x : list) {
+				if (x.getCatName().equals(category.getCatName())) {
+					// Cant save
+					return "listarCategorias";
+				}
 			}
 		}
 		dao.update(category);

@@ -23,6 +23,7 @@ public class ParameterBean {
 
 	private DataModel listaParametros;
 	private Parameter parameter = new Parameter();
+	private String actualKey = "";
 
 	public ParameterBean() {
 
@@ -36,6 +37,7 @@ public class ParameterBean {
 
 	public String prepararUpdate() {
 		parameter = (Parameter) listaParametros.getRowData();
+		actualKey = parameter.getParamName();
 		return "actualizarParametro";
 	}
 
@@ -46,12 +48,15 @@ public class ParameterBean {
 
 		// Check if available
 		List<Parameter> list = dao.getParameters();
-		for (Parameter x : list) {
-			if (x.getParamName().equals(parameter.getParamName())) {
-				// Cant save
-				return "listarParametros";
+		if (!actualKey.equals(parameter.getParamName())) {
+			for (Parameter x : list) {
+				if (x.getParamName().equals(parameter.getParamName())) {
+					// Cant save
+					return "listarParametros";
+				}
 			}
 		}
+
 		dao.update(parameter);
 
 		// Audit register

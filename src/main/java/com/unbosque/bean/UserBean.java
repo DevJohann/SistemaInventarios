@@ -42,6 +42,7 @@ public class UserBean {
 		// Retrieving params
 		// System.out.println(tempLoginVal + tempPassVal);
 		User user = userDAO.retrieveUser(tempLoginVal, tempPassVal);
+		// System.out.println(user == null);
 		if (user != null) {
 			// Check if user is available
 			if (user.getUserStatus()) {

@@ -23,6 +23,7 @@ public class ProductBean {
 
 	private DataModel listaProductos;
 	private Product product = new Product();
+	private String actualKey = "";
 	/*
 	 * public List<Product> getProducts() { ProductDAOImpl productDao = new
 	 * ProductDAOImpl(); List<Product> products = productDao.getProducts(); return
@@ -31,6 +32,7 @@ public class ProductBean {
 
 	public String prepararUpdate() {
 		product = (Product) (listaProductos.getRowData());
+		actualKey = product.getProductRef();
 		return "actualizarProducto";
 	}
 
@@ -41,10 +43,12 @@ public class ProductBean {
 
 		// Check if available
 		List<Product> list = dao.getProducts();
-		for (Product x : list) {
-			if (x.getProductRef().equals(product.getProductRef())) {
-				// Cant save
-				return "listarProductos";
+		if (!actualKey.equals(product.getProductRef())) {
+			for (Product x : list) {
+				if (x.getProductRef().equals(product.getProductRef())) {
+					// Cant save
+					return "listarProductos";
+				}
 			}
 		}
 		dao.update(product);
