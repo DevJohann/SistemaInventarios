@@ -21,7 +21,7 @@ import com.unbosque.entity.Parameter;
 @SessionScoped
 public class ParameterBean {
 	private DataModel listaParametros;
-	private Parameter parameter = new Parameter();
+	private Parameter parameter;
 
 	public DataModel getListarProductos() {
 		List<Parameter> lista = new ParameterDAOImpl().getParameters();
@@ -77,6 +77,17 @@ public class ParameterBean {
 			e.printStackTrace();
 		}
 		auditDAO.save(audit);
+		return "listarParametros";
+	}
+	
+	public String prepararInsert() {
+		parameter = new Parameter();
+		return "insertarParametro";
+	}
+	
+	public String realizarInsert() {
+		ParameterDAO dao = new ParameterDAOImpl();
+		dao.save(parameter);
 		return "listarParametros";
 	}
 

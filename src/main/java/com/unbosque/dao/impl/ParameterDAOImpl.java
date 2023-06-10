@@ -36,4 +36,12 @@ public class ParameterDAOImpl implements ParameterDAO {
 		t.commit();
 	}
 
+	@Override
+	public void save(Parameter parameter) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.save(parameter);
+		t.commit();
+	}
+
 }
