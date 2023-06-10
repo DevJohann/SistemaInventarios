@@ -62,6 +62,7 @@
 			
 			<p:column headerText="Acciones" >
 			<h:commandButton value="Modificar" action="#{userBean.prepararUpdate}" />
+			<h:commandButton value="Eliminar" action="#{userBean.eliminarUsuario}" />
 			</p:column>
 			
 	</p:dataTable>
@@ -70,7 +71,7 @@
 	</p:panel>
 	
 	<h:form>
-	<h:commandButton value="Insertar usuario" action="index" />
+	<h:commandButton value="Insertar usuario" action="#{userBean.prepararInsert}" />
 	<h:commandButton value="Volver" action="ListaTablas" />
 	</h:form>
 

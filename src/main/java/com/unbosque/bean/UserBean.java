@@ -1,5 +1,6 @@
 package com.unbosque.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -95,16 +96,35 @@ public class UserBean {
 		RegisterBean rb = new RegisterBean();
 		UserDAO dao = new UserDAOImpl();
 		user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
+		user.setLastPsswdDate(new Date());
 		dao.update(user);
 		return "listarUsuarios";
 	}
-	/*
+	
 	public String eliminarUsuario() {
 		User userTemp = (User)(listaUsuarios.getRowData());
 		UserDAO dao = new UserDAOImpl();
-		dao.remove(userTemp);
+		userTemp.setUserStatus(false);
+		dao.update(userTemp);
 		return "listarUsuarios";
-	}*/
+	}
+	
+	public String prepararInsert() {
+		user = new User();
+		user.setLastPsswdDate(new Date());
+		user.setRegisterDate(new Date());
+		user.setPsswdAttemps(0);
+	//	user.setUserStatus(true);
+		return "insertarUsuario";
+	}
+	
+	public String realizarInsert() {
+		UserDAO dao = new UserDAOImpl();
+		RegisterBean rb = new RegisterBean();
+		user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
+		dao.save(user);
+		return "listarUsuarios";
+	}
 
 	public DataModel getListaUsuarios() {
 		return listaUsuarios;

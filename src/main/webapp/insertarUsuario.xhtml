@@ -9,7 +9,30 @@
 </h:head>
 <h:body>
 
-
+<h:form>
+		
+ 		Nombre de usuario: <h:inputText value="#{userBean.user.login}" />    
+		Contraseña: <h:inputText value="#{userBean.user.psswd}" />
+		Tipo de usuario: <h:selectOneMenu value="#{userBean.user.userType}">
+			<f:selectItem itemLabel="Empleado" itemValue="E"></f:selectItem>
+			<f:selectItem itemLabel="Administrador" itemValue="A"></f:selectItem>
+		</h:selectOneMenu>
+		Nombre: <h:inputText value="#{userBean.user.userName}" />
+		Apellido: <h:inputText value="#{userBean.user.userSurname}" />
+		Email: <h:inputText value="#{userBean.user.userEmail}" />
+		
+		Estado: <h:selectOneMenu value="#{userBean.user.userStatus}">
+			<f:selectItem itemLabel="Activo" itemValue="true"></f:selectItem>
+			<f:selectItem itemLabel="Inactivo" itemValue="false"></f:selectItem>
+		</h:selectOneMenu>
+		
+		<h:commandButton action="#{userBean.realizarInsert}" value="Insertar" />
+		
+</h:form>
+	
+	<h:form>
+	<h:commandButton action="listarUsuarios" value="Volver" />
+	</h:form>
 
 </h:body>
 </html>
