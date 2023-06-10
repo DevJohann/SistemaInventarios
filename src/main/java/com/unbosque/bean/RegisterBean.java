@@ -1,5 +1,7 @@
 package com.unbosque.bean;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -15,8 +17,11 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.unbosque.dao.AuditDAO;
 import com.unbosque.dao.UserDAO;
+import com.unbosque.dao.impl.AuditDAOImpl;
 import com.unbosque.dao.impl.UserDAOImpl;
+import com.unbosque.entity.Audit;
 import com.unbosque.entity.User;
 
 @ManagedBean
@@ -43,6 +48,9 @@ public class RegisterBean {
 
 	public String registerNewUser() {
 		UserDAO userDAO = new UserDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
+
 		// Check if user already exists
 		if (userDAO.retrieveUser(login) == null) {
 			// User is available
@@ -60,6 +68,19 @@ public class RegisterBean {
 			// Load user to DB
 			this.sendEmail();
 			userDAO.save(newUser);
+
+			// Audit register
+			audit.setUserId(newUser.getLogin());
+			audit.setDate(new Date());
+			audit.setAction("I");
+			audit.setTableId("users");
+			try {
+				audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			auditDAO.save(audit);
 
 			return "index";
 		} else {

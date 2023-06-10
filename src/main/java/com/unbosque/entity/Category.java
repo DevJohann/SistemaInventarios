@@ -1,29 +1,37 @@
 package com.unbosque.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the categories database table.
  * 
  */
 @Entity
-@Table(name="categories")
-@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
+@Table(name = "categories")
+@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int id;
 
-	@Column(name="cat_name")
+	@Column(name = "cat_name")
 	private String catName;
 
-	@Column(name="cat_status")
+	@Column(name = "cat_status")
 	private byte catStatus;
 
 	public Category() {
+	}
+
+	public String getCalculateStatus() {
+		return (catStatus == (byte) 1) ? "ACTIVO" : "INACTIVO";
 	}
 
 	public int getId() {

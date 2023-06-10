@@ -1,5 +1,7 @@
 package com.unbosque.bean;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.List;
 
@@ -10,8 +12,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
+import com.unbosque.dao.AuditDAO;
 import com.unbosque.dao.UserDAO;
+import com.unbosque.dao.impl.AuditDAOImpl;
 import com.unbosque.dao.impl.UserDAOImpl;
+import com.unbosque.entity.Audit;
 import com.unbosque.entity.User;
 
 @ManagedBean
@@ -32,6 +37,8 @@ public class UserBean {
 
 	public String checkLogin() {
 		UserDAO userDAO = new UserDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
 		// Retrieving params
 		// System.out.println(tempLoginVal + tempPassVal);
 		User user = userDAO.retrieveUser(tempLoginVal, tempPassVal);
@@ -45,9 +52,35 @@ public class UserBean {
 				// Check user status
 				// System.out.println(user.getUserType().equals("E"));
 				if (user.getUserType().equals("E")) {
+
+					// Audit register
+					audit.setUserId(user.getLogin());
+					audit.setDate(new Date());
+					audit.setAction("L");
+					audit.setTableId("N/A");
+					try {
+						audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+					} catch (UnknownHostException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					auditDAO.save(audit);
 					// Employee view
 					return "VistaEmpleado";
 				}
+				// Audit register
+				audit.setUserId(user.getLogin());
+				audit.setDate(new Date());
+				audit.setAction("L");
+				audit.setTableId("N/A");
+				try {
+					audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				auditDAO.save(audit);
+
 				// Admin view
 				return "ListaTablas";
 			} else {
@@ -97,17 +130,48 @@ public class UserBean {
 	public String realizarUpdate() {
 		RegisterBean rb = new RegisterBean();
 		UserDAO dao = new UserDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
+
 		user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
 		user.setLastPsswdDate(new Date());
 		dao.update(user);
+
+		// Audit register
+		audit.setUserId(user.getLogin());
+		audit.setDate(new Date());
+		audit.setAction("U");
+		audit.setTableId("users");
+		try {
+			audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		auditDAO.save(audit);
 		return "listarUsuarios";
 	}
 
 	public String eliminarUsuario() {
 		User userTemp = (User) (listaUsuarios.getRowData());
 		UserDAO dao = new UserDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
 		userTemp.setUserStatus(false);
 		dao.update(userTemp);
+
+		// Audit register
+		audit.setUserId(user.getLogin());
+		audit.setDate(new Date());
+		audit.setAction("D");
+		audit.setTableId("users");
+		try {
+			audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		auditDAO.save(audit);
 		return "listarUsuarios";
 	}
 
@@ -123,9 +187,25 @@ public class UserBean {
 	public String realizarInsert() {
 		UserDAO dao = new UserDAOImpl();
 		RegisterBean rb = new RegisterBean();
-		if(dao.retrieveUser(user.getLogin()) == null) {
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
+
+		if (dao.retrieveUser(user.getLogin()) == null) {
 			user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
 			dao.save(user);
+
+			// Audit register
+			audit.setUserId(user.getLogin());
+			audit.setDate(new Date());
+			audit.setAction("U");
+			audit.setTableId("users");
+			try {
+				audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			auditDAO.save(audit);
 			return "listarUsuarios";
 		}
 		return "insertarUsuario";

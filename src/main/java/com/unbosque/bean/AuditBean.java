@@ -14,7 +14,7 @@ import com.unbosque.entity.Audit;
 @ManagedBean
 @SessionScoped
 public class AuditBean {
-	
+
 	private DataModel listaAuditorias;
 	private Audit audit = new Audit();
 
@@ -23,24 +23,24 @@ public class AuditBean {
 		List<Audit> audit = auditDAO.getAudits();
 		return audit;
 	}
-	
+
 	public DataModel getListarAuditorias() {
 		List<Audit> lista = new AuditDAOImpl().getAudits();
 		listaAuditorias = new ListDataModel(lista);
 		return listaAuditorias;
 	}
-	
-	public String prepararUpdate(){
-		audit = (Audit)(listaAuditorias.getRowData());
+
+	public String prepararUpdate() {
+		audit = (Audit) (listaAuditorias.getRowData());
 		return "actualizarAuditoria";
 	}
-	
+
 	public String realizarUpdate() {
 		AuditDAO dao = new AuditDAOImpl();
 		dao.update(audit);
 		return "listarAuditorias";
 	}
-	
+
 	public Audit getAudit() {
 		return audit;
 	}
@@ -48,5 +48,5 @@ public class AuditBean {
 	public void setAudit(Audit audit) {
 		this.audit = audit;
 	}
-	
+
 }

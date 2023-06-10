@@ -12,7 +12,10 @@
 	<h:form>
 	
 		Nombre categoría: <h:inputText value="#{categoryBean.category.catName}" /> 
-		Estado categoría: <h:inputText value="#{categoryBean.category.catStatus}" />
+		Estado categoría: <h:selectOneMenu value="#{categoryBean.category.catStatus}">
+							<f:selectItem itemValue="1" itemLabel="ACTIVO"></f:selectItem>
+							<f:selectItem itemValue="0" itemLabel="INACTIVO"></f:selectItem>
+						</h:selectOneMenu>
 		
 		<h:commandButton value="Actualizar" action="#{categoryBean.realizarUpdate}" />
 		
