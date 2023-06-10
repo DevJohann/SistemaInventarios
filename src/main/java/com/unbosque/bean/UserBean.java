@@ -148,6 +148,7 @@ public class UserBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		auditDAO.save(audit);
 		return "listarUsuarios";
 	}
 
@@ -170,6 +171,7 @@ public class UserBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		auditDAO.save(audit);
 		return "listarUsuarios";
 	}
 
@@ -203,6 +205,7 @@ public class UserBean {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			auditDAO.save(audit);
 			return "listarUsuarios";
 		}
 		return "insertarUsuario";
