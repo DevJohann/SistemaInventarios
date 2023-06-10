@@ -11,9 +11,9 @@
 	
 	<h:form>
 	
-	Nombre de la categoría: <h:inputText value="" /> 
+	Nombre de la categoría: <h:inputText value="#{categoryBean.category.catName}" /> 
 	
-	<h:commandButton value="Insertar" action="categoryBean.insertarCategoria" />
+	<h:commandButton value="Insertar" action="#{categoryBean.insertarCategoria}" />
 	
 	</h:form>
 	

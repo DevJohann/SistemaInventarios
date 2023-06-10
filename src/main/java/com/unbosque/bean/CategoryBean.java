@@ -93,6 +93,28 @@ public class CategoryBean {
 		return "insertarCategoria";
 	}
 
+	public String insertarCategoria() {
+		CategoryDAO dao = new CategoryDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
+		dao.save(category);
+
+		// Audit register
+		audit.setUserId(category.getId() + "");
+		audit.setDate(new Date());
+		audit.setAction("I");
+		audit.setTableId("categories");
+		try {
+			audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		auditDAO.save(audit);
+
+		return "listarCategorias";
+	}
+
 	public Category getCategory() {
 		return category;
 	}
