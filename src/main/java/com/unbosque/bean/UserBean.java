@@ -161,7 +161,7 @@ public class UserBean {
 		dao.update(userTemp);
 
 		// Audit register
-		audit.setUserId(user.getLogin());
+		audit.setUserId(userTemp.getLogin());
 		audit.setDate(new Date());
 		audit.setAction("D");
 		audit.setTableId("users");
