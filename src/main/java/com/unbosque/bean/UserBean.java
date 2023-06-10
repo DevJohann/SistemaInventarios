@@ -57,7 +57,7 @@ public class UserBean {
 					audit.setUserId(user.getLogin());
 					audit.setDate(new Date());
 					audit.setAction("L");
-					audit.setTableId("users");
+					audit.setTableId("N/A");
 					try {
 						audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
 					} catch (UnknownHostException e) {
@@ -72,7 +72,7 @@ public class UserBean {
 				audit.setUserId(user.getLogin());
 				audit.setDate(new Date());
 				audit.setAction("L");
-				audit.setTableId("users");
+				audit.setTableId("N/A");
 				try {
 					audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
 				} catch (UnknownHostException e) {
@@ -156,7 +156,7 @@ public class UserBean {
 	public String realizarInsert() {
 		UserDAO dao = new UserDAOImpl();
 		RegisterBean rb = new RegisterBean();
-		if(dao.retrieveUser(user.getLogin()) == null) {
+		if (dao.retrieveUser(user.getLogin()) == null) {
 			user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
 			dao.save(user);
 			return "listarUsuarios";
