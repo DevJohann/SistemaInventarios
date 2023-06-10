@@ -67,10 +67,12 @@ public class UserBean {
 				// Username is also invalid
 				return "login";
 			}
-			userNotValid.setPsswdAttemps(userNotValid.getPsswdAttemps() + 1);
+			if (userNotValid.getUserType().equals("E")) {
+				userNotValid.setPsswdAttemps(userNotValid.getPsswdAttemps() + 1);
+			}
 
 			// Validate if password attempts are greater than 3
-			if (userNotValid.getPsswdAttemps() >= 3) {
+			if (userNotValid.getPsswdAttemps() >= 3 && userNotValid.getUserType().equals("E")) {
 				// Disable user
 				userNotValid.setUserStatus(false);
 				userDAO.update(userNotValid);
@@ -80,7 +82,7 @@ public class UserBean {
 			return "login";
 		}
 	}
-	
+
 	public DataModel getListarUsuarios() {
 		List<User> lista = new UserDAOImpl().getUsers();
 		listaUsuarios = new ListDataModel(lista);
@@ -100,24 +102,24 @@ public class UserBean {
 		dao.update(user);
 		return "listarUsuarios";
 	}
-	
+
 	public String eliminarUsuario() {
-		User userTemp = (User)(listaUsuarios.getRowData());
+		User userTemp = (User) (listaUsuarios.getRowData());
 		UserDAO dao = new UserDAOImpl();
 		userTemp.setUserStatus(false);
 		dao.update(userTemp);
 		return "listarUsuarios";
 	}
-	
+
 	public String prepararInsert() {
 		user = new User();
 		user.setLastPsswdDate(new Date());
 		user.setRegisterDate(new Date());
 		user.setPsswdAttemps(0);
-	//	user.setUserStatus(true);
+		// user.setUserStatus(true);
 		return "insertarUsuario";
 	}
-	
+
 	public String realizarInsert() {
 		UserDAO dao = new UserDAOImpl();
 		RegisterBean rb = new RegisterBean();
