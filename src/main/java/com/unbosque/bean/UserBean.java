@@ -79,7 +79,7 @@ public class UserBean {
 			return "login";
 		}
 	}
-
+	
 	public DataModel getListarUsuarios() {
 		List<User> lista = new UserDAOImpl().getUsers();
 		listaUsuarios = new ListDataModel(lista);
@@ -92,17 +92,19 @@ public class UserBean {
 	}
 
 	public String realizarUpdate() {
+		RegisterBean rb = new RegisterBean();
 		UserDAO dao = new UserDAOImpl();
+		user.setPsswd(rb.encryptPassword(user.getPsswd(), "MD5"));
 		dao.update(user);
 		return "listarUsuarios";
 	}
-	
+	/*
 	public String eliminarUsuario() {
 		User userTemp = (User)(listaUsuarios.getRowData());
 		UserDAO dao = new UserDAOImpl();
 		dao.remove(userTemp);
 		return "listarUsuarios";
-	}
+	}*/
 
 	public DataModel getListaUsuarios() {
 		return listaUsuarios;

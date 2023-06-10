@@ -27,7 +27,8 @@
 			</p:column>
 			
 			<p:column headerText="Tipo de usuario">
-			<h:outputText value ="#{user.userType}"/>
+			<h:outputText value ="Empleado" rendered="#{'E' eq user.userType}"/>
+			<h:outputText value="Administrador" rendered="#{'A' eq user.userType}" />
 			</p:column>
 			
 			<p:column headerText="Nombre" >
@@ -55,12 +56,12 @@
 			</p:column>
 			
 			<p:column headerText="Estado">
-			<h:outputText value ="#{user.userStatus}"/>
+			<h:outputText value="Activo" rendered="#{'true' eq user.userStatus}" />
+			<h:outputText value="Inactivo" rendered="#{'false' eq user.userStatus}" />
 			</p:column>
 			
 			<p:column headerText="Acciones" >
 			<h:commandButton value="Modificar" action="#{userBean.prepararUpdate}" />
-			<h:commandButton value="Eliminar" action="#{userBean.eliminarUsuario}" />
 			</p:column>
 			
 	</p:dataTable>
@@ -69,10 +70,15 @@
 	</p:panel>
 	
 	<h:form>
+<<<<<<< HEAD
 	
 		<p:link outcome="ListaTablas" value="Volver">
 	        
 	    </p:link> 
+=======
+	<h:commandButton value="Insertar usuario" action="index" />
+	<h:commandButton value="Volver" action="ListaTablas" />
+>>>>>>> 0f94a8749de271c99e5bd4ce0b31740b2e093f95
 	</h:form>
 
 </h:body>
