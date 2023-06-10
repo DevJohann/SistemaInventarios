@@ -17,7 +17,7 @@ import javax.faces.model.ListDataModel;
 public class ProductBean {
 	
 	private DataModel listaProductos;
-	private Product product = new Product();
+	private Product product;
 /*
 	public List<Product> getProducts() {
 		ProductDAOImpl productDao = new ProductDAOImpl();
@@ -59,6 +59,18 @@ public class ProductBean {
 		}else {
 			return "vistaEmpleado";
 		}
+	}
+	
+	public String prepararInsert() {
+		product = new Product();
+		return "insertarProducto";
+	}
+	
+	public String realizarInsert() {
+		System.out.println("dlfjs");
+		ProductDAO dao = new ProductDAOImpl();
+		dao.save(product);
+		return "listarProductos";
 	}
 
 	public Product getProduct() {

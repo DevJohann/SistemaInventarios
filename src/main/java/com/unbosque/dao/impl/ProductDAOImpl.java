@@ -36,4 +36,12 @@ public class ProductDAOImpl implements ProductDAO {
 		t.commit();
 	}
 
+	@Override
+	public void save(Product product) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.save(product);
+		t.commit();
+	}
+
 }
