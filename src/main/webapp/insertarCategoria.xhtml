@@ -11,10 +11,13 @@
 	
 	<h:form>
 	
-	Nombre de la categoría: <h:inputText value="#{categoryBean.category.catName}" /> 
+	Nombre de la categoría: <h:inputText value="#{categoryBean.category.catName}" >
+		<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+	</h:inputText> 
+	<br/>
 	
 	<h:commandButton value="Insertar" action="#{categoryBean.insertarCategoria}" />
-	
+	<br/>
 	</h:form>
 	
 	<h:form>

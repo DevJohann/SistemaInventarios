@@ -12,10 +12,10 @@
 <h:form>
 	
 
-	Referencia producto: <h:inputText value="#{productBean.product.productRef}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	Referencia producto: <h:inputText id="ref" value="#{productBean.product.productRef}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
 						</h:inputText>
+ 	<h:message for="ref"></h:message>
 	<br/>
- 
 	Descripción producto: <h:inputText id="desc" value="#{productBean.product.productDesc}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 	<h:message for="desc"></h:message>
 	<br/>
@@ -40,20 +40,15 @@
 	
 	
 
-	Precio de venta: <h:inputText value="#{productBean.product.sellPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+	Precio de venta: <h:inputText id="sell" value="#{productBean.product.sellPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
 	
 						</h:inputText>
-						
-	Precio de compra: <h:inputText value="#{productBean.product.buyPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+						<h:message for="sell"></h:message>
+						<br/>
+	Precio de compra: <h:inputText id="buy" value="#{productBean.product.buyPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
 	
 						</h:inputText>
-
-	Precio de venta: <h:inputText id="sell" value="#{productBean.product.sellPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
-	<h:message for="sell"></h:message>
-	<br/>
-
-	Precio de compra: <h:inputText id="buy" value="#{productBean.product.buyPrice}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
-	<h:message for="buy"></h:message>
+						<h:message for="buy"></h:message>
 	<br/>
 	
 	Estado producto: <h:selectOneMenu value="#{productBean.product.productStatus}" >

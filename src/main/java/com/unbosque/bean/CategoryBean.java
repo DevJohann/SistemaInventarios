@@ -46,6 +46,14 @@ public class CategoryBean {
 		AuditDAO auditDAO = new AuditDAOImpl();
 		Audit audit = new Audit();
 
+		// Check if available
+		List<Category> list = dao.getCategory();
+		for (Category x : list) {
+			if (x.getCatName().equals(category.getCatName())) {
+				// Cant save
+				return "listarCategorias";
+			}
+		}
 		dao.update(category);
 
 		// Audit register
@@ -97,6 +105,15 @@ public class CategoryBean {
 		CategoryDAO dao = new CategoryDAOImpl();
 		AuditDAO auditDAO = new AuditDAOImpl();
 		Audit audit = new Audit();
+
+		// Check if available
+		List<Category> list = dao.getCategory();
+		for (Category x : list) {
+			if (x.getCatName().equals(category.getCatName())) {
+				// Cant save
+				return "listarCategorias";
+			}
+		}
 		dao.save(category);
 
 		// Audit register

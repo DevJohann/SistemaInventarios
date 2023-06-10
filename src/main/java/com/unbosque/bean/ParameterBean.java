@@ -20,14 +20,14 @@ import com.unbosque.entity.Parameter;
 @ManagedBean
 @SessionScoped
 public class ParameterBean {
-	
+
 	private DataModel listaParametros;
 	private Parameter parameter = new Parameter();
 
 	public ParameterBean() {
-		
+
 	}
-	
+
 	public DataModel getListarProductos() {
 		List<Parameter> lista = new ParameterDAOImpl().getParameters();
 		listaParametros = new ListDataModel(lista);
@@ -44,6 +44,14 @@ public class ParameterBean {
 		AuditDAO auditDAO = new AuditDAOImpl();
 		Audit audit = new Audit();
 
+		// Check if available
+		List<Parameter> list = dao.getParameters();
+		for (Parameter x : list) {
+			if (x.getParamName().equals(parameter.getParamName())) {
+				// Cant save
+				return "listarParametros";
+			}
+		}
 		dao.update(parameter);
 
 		// Audit register
@@ -84,15 +92,39 @@ public class ParameterBean {
 		auditDAO.save(audit);
 		return "listarParametros";
 	}
-	
+
 	public String prepararInsert() {
 		parameter = new Parameter();
 		return "insertarParametro";
 	}
-	
+
 	public String realizarInsert() {
 		ParameterDAO dao = new ParameterDAOImpl();
+		AuditDAO auditDAO = new AuditDAOImpl();
+		Audit audit = new Audit();
+
+		// Check if available
+		List<Parameter> list = dao.getParameters();
+		for (Parameter x : list) {
+			if (x.getParamName().equals(parameter.getParamName())) {
+				// Cant save
+				return "listarParametros";
+			}
+		}
 		dao.save(parameter);
+
+		// Audit register
+		audit.setUserId(parameter.getId() + "");
+		audit.setDate(new Date());
+		audit.setAction("D");
+		audit.setTableId("parameters");
+		try {
+			audit.setIpAddress(InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		auditDAO.save(audit);
 		return "listarParametros";
 	}
 

@@ -11,13 +11,30 @@
 <h:body>
 
 	<h:form>
-		Nombre: <h:inputText value="#{parameterBean.parameter.paramName}"></h:inputText>
-		Descripción: <h:inputText value="#{parameterBean.parameter.paramDesc}"></h:inputText>
-		Valor: <h:inputText value="#{parameterBean.parameter.paramValue}"></h:inputText>
-		Estado: <h:selectOneMenu value="#{parameterBean.parameter.paramStatus}">
+		Nombre: <h:inputText id="name" value="#{parameterBean.parameter.paramName}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+			<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+		</h:inputText>
+		<h:message for="name"></h:message>
+		<br/>
+		Descripción: <h:inputText id="desc" value="#{parameterBean.parameter.paramDesc}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+			
+		</h:inputText>
+		<h:message for="desc"></h:message>
+		<br/>
+		Valor: <h:inputText id="value" value="#{parameterBean.parameter.paramValue}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+			<!--  
+			<f:validateRegex pattern="[0-9]+"></f:validateRegex>
+			<f:converter converterId="javax.faces.Integer"></f:converter>
+			-->
+		</h:inputText>
+		<h:message for="value"></h:message>
+		<br/>
+		Estado: <h:selectOneMenu value="#{parameterBean.parameter.paramStatus}" >
 					<f:selectItem itemValue="1" itemLabel="ACTIVO"></f:selectItem>
 					<f:selectItem itemValue="0" itemLabel="INACTIVO"></f:selectItem>
 				</h:selectOneMenu>
+				
+		<br/>
 		<h:commandButton action="#{parameterBean.realizarUpdate}" value="Modificar" />
 		
 	</h:form>

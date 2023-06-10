@@ -11,12 +11,16 @@
 	
 	<h:form>
 	
-		Nombre categoría: <h:inputText value="#{categoryBean.category.catName}" /> 
+		Nombre categoría: <h:inputText id="name" value="#{categoryBean.category.catName}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
+			<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+		</h:inputText> 
+		<h:message for="name"></h:message>
+		<br/>
 		Estado categoría: <h:selectOneMenu value="#{categoryBean.category.catStatus}">
 							<f:selectItem itemValue="1" itemLabel="ACTIVO"></f:selectItem>
 							<f:selectItem itemValue="0" itemLabel="INACTIVO"></f:selectItem>
 						</h:selectOneMenu>
-		
+		<br/>
 		<h:commandButton value="Actualizar" action="#{categoryBean.realizarUpdate}" />
 		
 	</h:form>

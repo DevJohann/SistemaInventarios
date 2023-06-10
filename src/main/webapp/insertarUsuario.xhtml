@@ -14,7 +14,7 @@
  		Nombre de usuario: <h:inputText id="name" value="#{userBean.user.login}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
  		<h:message for="name"></h:message>   
  		<br/> 
-		Contraseña: <h:inputHidden id="psswd" value="#{userBean.user.psswd}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
+		Contraseña: <h:inputSecret id="psswd" value="#{userBean.user.psswd}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"/>
 		<h:message for="psswd"></h:message>
 		<br/>
 		Tipo de usuario: <h:selectOneMenu value="#{userBean.user.userType}">

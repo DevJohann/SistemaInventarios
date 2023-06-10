@@ -11,16 +11,23 @@
 
 <h:form>
 
-Nombre parámetro: <h:inputText value="#{parameterBean.parameter.paramName}" />
+Nombre parámetro: <h:inputText value="#{parameterBean.parameter.paramName}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido"> 
+	<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+</h:inputText>
+<br/>
+Descripción: <h:inputText value="#{parameterBean.parameter.paramDesc}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
 
-Descripción: <h:inputText value="#{parameterBean.parameter.paramDesc}" />
+</h:inputText>
+<br/>
+Valor parámetro: <h:inputText value="#{parameterBean.parameter.paramValue}" required="true" requiredMessage="Por favor, ingrese un valor" validatorMessage="Por favor, ingrese un valor válido">
 
-Valor parámetro: <h:inputText value="#{parameterBean.parameter.paramValue}" />
-
+</h:inputText>
+<br/>
 Estado parámetro: <h:selectOneMenu value="#{parameterBean.parameter.paramStatus}">
 	<f:selectItem itemLabel="Activo" itemValue="1"></f:selectItem>
 	<f:selectItem itemLabel="Inactivo" itemValue="0"></f:selectItem>
 </h:selectOneMenu>
+<br/>
 <h:commandButton  value="Insertar" action="#{parameterBean.realizarInsert}"/>
 
 </h:form>
