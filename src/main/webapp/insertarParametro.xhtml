@@ -15,11 +15,11 @@ Nombre parámetro: <h:inputText value="#{parameterBean.parameter.paramName}" />
 Descripción: <h:inputText value="#{parameterBean.parameter.paramDesc}" />
 Valor parámetro: <h:inputText value="#{parameterBean.parameter.paramValue}" />
 Estado parámetro: <h:selectOneMenu>
-	<f:selectItem itemLabel="Activo" itemValue="1"></f:selectItem>
-	<f:selectItem itemLabel="Inactivo" itemValue="0"></f:selectItem>
+	<f:selectItem itemLabel="Activo" itemValue="s"></f:selectItem>
+	<f:selectItem itemLabel="Inactivo" itemValue="n"></f:selectItem>
 </h:selectOneMenu>
 
-<h:commandButton action="#{parameterBean.realizarInsert}" value="Insertar" />
+<h:commandButton  value="Insertar" action="#{parameterBean.realizarInsert}"/>
 
 </h:form>
 

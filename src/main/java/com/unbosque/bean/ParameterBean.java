@@ -20,8 +20,9 @@ import com.unbosque.entity.Parameter;
 @ManagedBean
 @SessionScoped
 public class ParameterBean {
+	
 	private DataModel listaParametros;
-	private Parameter parameter;
+	private Parameter parameter = new Parameter();
 
 	public ParameterBean() {
 		
@@ -91,7 +92,7 @@ public class ParameterBean {
 	
 	public String realizarInsert() {
 		ParameterDAO dao = new ParameterDAOImpl();
-		dao.update(parameter);
+		dao.save(parameter);
 		return "listarParametros";
 	}
 

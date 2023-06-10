@@ -11,10 +11,6 @@
 
 <h1>Tabla de parámetros</h1>
 
-	<h:form>
-	<h:commandButton action="#{parameterBean.prepararInsert}" value="Insertar parámetro" />
-	</h:form>
-	
 	<p:panel id= "listaPara" header="Parámetros" style="margin-bottom:20px">
 	<h:form>
 	<p:dataTable var="parameter" value="#{parameterBean.listarProductos}" rows="6"
@@ -54,6 +50,10 @@
 	
 	</h:form>
 	</p:panel>
+	
+	<h:form>
+	<h:commandButton action="#{parameterBean.prepararInsert}" value="Insertar parámetro" />
+	</h:form>
 	
 	<h:form>
 	
